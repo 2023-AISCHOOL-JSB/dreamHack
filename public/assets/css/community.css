@@ -1,9 +1,17 @@
-/* 보드 (제목, 작성자) */
-.board {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 200px;
-    z-index: 100;
+.border {
+    padding: 50px;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+}
+
+#post_title {
+    width: 540px;
+}
+
+#post_conent {
+    width: 540px;
+    height: 400px;
 }
 
 

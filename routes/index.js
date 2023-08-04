@@ -26,4 +26,18 @@ router.get('/login',(req,res)=>{
 router.get('/join',(req,res)=>{
   res.render("join"); //views 파일 안의 join.html 나타내줌
 })
+
+// 커뮤니티 게시글 작성 페이지 이동
+router.get('/write', (req, res) => {
+  res.render("write",{obj : req.session.user});
+});
+
+router.get('/view', (req, res) => {
+  res.render("view",{obj : req.session.user});
+});
+
+router.get('/edit', (req, res) => {
+  res.render("edit",{obj : req.session.user});
+});
+
 module.exports = router;

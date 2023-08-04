@@ -11,6 +11,9 @@
         @import url('assets/css/community.css');
         @import url('assets/css/main.css');
         @import url('assets/css/dreamboard.css');
+        @import url('assets/css/post_style.css');
+
+
     </style>
 </head>
 
@@ -31,11 +34,11 @@
                     
                     <li><a href="/login">LOG IN</a></li> <!-- http://localhost:3333/community/login 에 링크 이동 -->
                     <li><a href="/join">JOIN IN</a></li> <!-- http://localhost:3333/community/join 에 링크 이동 -->
-                    
+                    {% endif %}
                 </ul>
             </div>
         </div>
-        {% endif %}
+        
         <!-- 페이지 별로 바뀌어야할 부분 -->
         {% block content %}
         {% endblock %}

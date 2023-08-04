@@ -7,6 +7,7 @@ const session = require("express-session");
 const fileStore = require("session-file-store")(session);
 const indexRouter = require("./routes");
 const userRouter = require("./routes/user");
+const postsRouter = require("./routes/posts")
 const cors = require("cors");
 
 /* CORS 오류 발생! 
@@ -47,6 +48,8 @@ app.use(
 // 6. 라우팅 처리
 app.use("/", indexRouter);
 app.use("/user", userRouter);
+app.use("/posts", postsRouter);
+
 
 app.listen(app.get("port"), () => {
   console.log(app.get("port") + "번 포트에서 대기중 ..");
