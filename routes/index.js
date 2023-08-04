@@ -26,4 +26,14 @@ router.get('/login',(req,res)=>{
 router.get('/join',(req,res)=>{
   res.render("join"); //views 파일 안의 join.html 나타내줌
 })
+
+// 마이페이지 계정관리 페이지이동 (http://localhost:3333/maypage_mange) 이동
+router.get('/mypage_manage',(req,res)=>{
+  res.render("mypage_manage",{obj : req.session.user});
+})
+
+// 마이페이지 투두리스트 페이지이동
+router.get('/mypage_todolist',(req,res)=>{
+  res.render("mypage_todolist",{obj : req.session.user});
+})
 module.exports = router;

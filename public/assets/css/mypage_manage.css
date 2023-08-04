@@ -1,0 +1,40 @@
+h1{
+    color : white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+}
+#manage__box{
+    
+    margin-top: 60px;
+}
+.int__area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    
+}
+
+.int__area.input{
+    width: 300px;
+
+}
+
+.btn__ara{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+label {
+    margin-right: 30px; /* 라벨과 입력 상자 사이의 간격을 조정합니다 */
+  }
+
+  input [type="submit"]{
+    margin:10px;
+  }
+

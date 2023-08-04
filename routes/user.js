@@ -57,4 +57,9 @@ router.get('/logout', (req, res) => {
     res.send("<script>location.href='http://localhost:3333'</script>")
 })
 
+// 마이페이지 기능 라우터
+router.get('/mypage_manage',(req,res)=>{
+    // 1. 
+})
+
 module.exports = router;

@@ -11,6 +11,8 @@
         @import url('assets/css/community.css');
         @import url('assets/css/main.css');
         @import url('assets/css/dreamboard.css');
+        @import url('assets/css/mypage_manage.css');
+        @import url('assets/css/mypage_todolist.css');
     </style>
 </head>
 
@@ -22,7 +24,7 @@
                 <ul>
                     {% if obj != undefined %}
                     <li><a href="/">HOME</a></li> <!-- http://localhost:3333/ 에 링크 이동 -->
-                    <li><a href="#">MY PAGE</a></li>
+                    <li><a href="/mypage_manage">MY PAGE</a></li> <!-- http://localhost:3333/mypage_manage 에 링크 이동 -->
                     <li><a href="/dreamboard">DREAM BOARD</a></li> <!-- http://localhost:3333/dreamboard 에 링크 이동 -->
                     <li><a href="/community">COMMUNITY</a></li> <!-- http://localhost:3333/community 에 링크 이동 -->
                     <li><a href="/user/logout">LOG OUT</a></li> <!-- http://localhost:3333/community/login 에 링크 이동 -->                 
@@ -33,8 +35,10 @@
                     <li><a href="/join">JOIN IN</a></li> <!-- http://localhost:3333/community/join 에 링크 이동 -->
                     {% endif %}
                 </ul>
+                
             </div>
         </div>
+        
         <!-- 페이지 별로 바뀌어야할 부분 -->
         {% block content %}
         {% endblock %}
