@@ -36,4 +36,15 @@ router.get('/mypage_manage',(req,res)=>{
 router.get('/mypage_todolist',(req,res)=>{
   res.render("mypage_todolist",{obj : req.session.user});
 })
+
+// 투두리스트 작성
+router.get('/todolist_write',(req,res)=>{
+  res.render("todolist_write",{obj : req.session.user});
+})
+
+// 투두리스트 본문 내용
+router.get('/todolist',(req,res)=>{
+  res.render("todolist",{obj : req.session.user});
+})
+
 module.exports = router;
