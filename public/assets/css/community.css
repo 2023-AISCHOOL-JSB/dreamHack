@@ -1,0 +1,33 @@
+/* 보드 (제목, 작성자) */
+.board {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 200px;
+    z-index: 100;
+}
+
+
+
+/* 글 작성 버튼 스타일 */
+.write-btn {
+    position: fixed;
+    background-color: rgb(143, 188, 143);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    bottom: 80px;
+    right: 200px;
+    cursor: pointer;
+}
+
+.write-btn:hover {
+    background-color: darkslategray;
+}
+
+.modal-content.h2 {
+    margin-bottom: 20px;
+
+}

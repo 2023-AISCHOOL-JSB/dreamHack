@@ -1,0 +1,44 @@
+{% extends 'layout.html'%}
+
+{% block content%}
+
+<h3> 회원가입 페이지 </h3>
+
+<section id="banner">
+   <div class="inner">
+      <form method="post" action="../user/join">
+         <div class="fields">
+            <div class="field half">
+               <label for="id">ID</label>
+               <input type="text" name="id" id="id" />
+            </div>
+            <div class="field half">
+               <label for="name">이름</label>
+               <input type="text" name="user_name" id="user_name" />
+            </div>
+            <div class="field half">
+               <label for="name">비밀번호</label>
+               <input type="password" name="pw" id="password" />
+            </div>
+            <div class="field half">
+               <label for="name">비밀번호 확인</label>
+               <input type="password" name="pw2" id="password2" />
+            </div>
+            <div class="field ">
+               <label for="name">성별</label>&nbsp;&nbsp;
+               남자<input type="radio" name="gender" value="남" id="gender" />&nbsp;&nbsp;
+               여자<input type="radio" name="gender" value="여" id="gender" />
+            </div>
+            <div class="field half">
+               <label for="name">생년 월일</label>
+               <input type="date" name="birth_date" id="birth_date" />
+            </div>
+            <div class="field half">
+               <label for="name"></label>
+               <input type="submit"/>
+            </div>
+         </div>
+      </form>
+   </div>
+</section>
+{% endblock %}
