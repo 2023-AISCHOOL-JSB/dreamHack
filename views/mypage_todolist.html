@@ -1,0 +1,36 @@
+{% extends 'layout.html'%}
+
+{% block content%}
+<div class="hero">
+    <div class="myPage__ToDoList">
+        <div class="myPage__ToDoList__Category">
+            <ul class="myPage__ToDoList__Category__detail">
+                <li>mypage</li>
+                <li>계정관리</li>
+                <li>커뮤니티 게시판</li>
+                <li>내가쓴게시글</li>
+                <li>나의 ToDoList</li>
+                <li>회원탈퇴</li>
+            </ul>
+        </div>
+        <div class="myPage__ToDoList__Content">
+            <nav><h1>나의 To Do List</h1>
+            </nav>
+            <div class="TodoList__contents">
+                <div>번호</div>
+                <div>제목</div>
+                <div>글쓴이</div>
+                <div>작설일자</div>
+            </div>
+            <div>
+                <div class="num">5</div>
+                <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
+                <div class="writer">김이름</div>
+                <div class="date">2021.1.15</div>
+                <div class="count">33</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock%}

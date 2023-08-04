@@ -1,0 +1,22 @@
+.myPage__ToDoList__Category__detail{
+    list-style-type: none;
+    list-style: none;
+    font-weight: bold;
+    line-height: 5.0;
+    margin: 0;
+    padding-inline-start: 1.0em;
+    list-style-position: inside;
+}
+.myPage__ToDoList__Category{
+    background-color:rgba(49, 206, 230, 0.7);
+    border-radius: 20px;
+    width: 15vw;
+    height: 40vw;
+}
+.myPage__ToDoList{
+    display: flex;
+    align-items: center;
+}
+.hero{
+    width: 100vw;
+}
