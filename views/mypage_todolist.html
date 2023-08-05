@@ -3,16 +3,7 @@
 {% block content%}
 <div class="todolist_form">
     <div class="myPage__ToDoList">
-        <div class="myPage__ToDoList__Category">
-            <ul class="myPage__ToDoList__Category__detail">
-                <li>mypage</li>
-                <li>계정관리</li>
-                <li>커뮤니티 게시판</li>
-                <li>내가쓴게시글</li>
-                <li>나의 ToDoList</li>
-                <li>회원탈퇴</li>
-            </ul>
-        </div>
+        {% include 'category.html'%}
         <div class="todolist_board_wrap">
             <div class="board_title">
                 <strong>ToDoList</strong>
