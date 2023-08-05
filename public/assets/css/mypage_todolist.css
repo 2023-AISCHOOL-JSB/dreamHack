@@ -32,11 +32,11 @@
     border-radius: 20px;
 }
 
-.board_list .num,
+/* .board_list .num,
 .board_list .writer,
 .board_list .count {
     display: none;
-}
+} */
 
 .board_list .date {
     width: 40%;
