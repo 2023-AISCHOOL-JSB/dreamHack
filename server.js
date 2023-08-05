@@ -7,7 +7,8 @@ const session = require("express-session");
 const fileStore = require("session-file-store")(session);
 const indexRouter = require("./routes");
 const userRouter = require("./routes/user");
-const postsRouter = require("./routes/posts")
+const postsRouter = require("./routes/posts");
+const todoRouter = require("./routes/todo");
 const cors = require("cors");
 
 /* CORS 오류 발생! 
@@ -49,6 +50,7 @@ app.use(
 app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/posts", postsRouter);
+app.use("/todo",todoRouter);
 
 
 app.listen(app.get("port"), () => {
