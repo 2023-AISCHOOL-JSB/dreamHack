@@ -1,0 +1,35 @@
+
+{% extends 'layout.html'%}
+
+{% block content%}
+
+<form action="/posts/write" method="post" id="myForm">
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong>커뮤니티 게시판</strong>
+        </div>
+        <div class="board_write_wrap">
+            <div class="board_write">
+                <div class="title">
+                    <dl>
+                        <dt>제목</dt>
+                        <dd><input type="text" placeholder="제목 입력" name="post_title"></dd>
+                    </dl>
+                </div>
+                <div class="info">
+                    <!--  -->
+                </div>
+                <div class="cont">
+                    <textarea placeholder="내용 입력" name="post_conent"></textarea>
+                </div>
+            </div>
+            <div class="bt_wrap">
+                <a href="community">취소</a>
+            </div>
+        </div>
+        <input type="submit" name="" id="">
+    </div>
+</form>
+
+{% endblock %}
+

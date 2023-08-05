@@ -47,4 +47,17 @@ router.get('/todolist',(req,res)=>{
   res.render("todolist",{obj : req.session.user});
 })
 
+// 커뮤니티 게시글 작성 페이지 이동
+router.get('/write', (req, res) => {
+  res.render("write",{obj : req.session.user});
+});
+
+router.get('/view', (req, res) => {
+  res.render("view",{obj : req.session.user});
+});
+
+router.get('/edit', (req, res) => {
+  res.render("edit",{obj : req.session.user});
+});
+
 module.exports = router;
