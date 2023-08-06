@@ -9,10 +9,7 @@ h1{
     align-items: center;
     margin-bottom : 50px;
 }
-#manage__box{   
-    margin-top: 250px;
-    position:relative;
-}
+
 .int__area{
     display: flex;
     justify-content: center;
