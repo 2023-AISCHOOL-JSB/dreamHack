@@ -1,25 +1,24 @@
 section{
     background-color : white;
 }
-#manage_box{
-    margin-top: 60px;
+#manage__box{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 25px;
     text-align: center;
+    margin-top: 100px;
 }
 
-.int__area{
-    margin-top: 30px;
-}
+
 h1{
     color : black;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom : 50px;
+    margin-top: 50px;
 }
 
 .int__area{
@@ -44,3 +43,28 @@ label {
     margin:10px;
   }
 
+  input[type=text] {
+    width: 500px;
+    height: 42px;
+    font-size: 15px;
+    border: 3px solid black;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: white;
+    
+    
+}
+
+input[type=password] {
+    width: 500px;
+    height: 42px;
+    font-size: 15px;
+    border: 3px solid black;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: wh;
+    margin-top: 20px;
+   
+}
