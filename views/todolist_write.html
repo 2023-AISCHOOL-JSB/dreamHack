@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="ko">
+{% extends 'layout.html'%}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>공지사항</title>
-    <link rel="stylesheet" href="/assets/css/mypage_todolist.css">
-</head>
+{% block content%}
 
-<body>
+
     <div class="board_wrap">
+        {% include 'category.html'%}
         <div class="board_title">
             <strong>ToDoList</strong>
             <p>내가 할 일은 내가 정한다!</p>
@@ -47,6 +42,5 @@
         </div>
     </div>
     <script src="/assets/js/todolist.js"></script>
-</body>
 
-</html>
+{% endblock%}
