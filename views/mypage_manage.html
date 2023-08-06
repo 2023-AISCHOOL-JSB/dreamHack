@@ -2,29 +2,32 @@
 
 {% block content%}
 
-<section>
-<form action="/user/login" method="post">
-    <!-- {% include 'category.html'%} -->
-    <div id="manage__box">
-        <h1>계정 관리</h1>
-        <div class="int__area">
-            <label for="id">유저 닉네임 변경</label>
-            <input type="text" name="id" id="id" autocomplete="off">
-        </div>
-        <div class="int__area">
-            <label for="pw">비밀번호 변경</label>
-            <input type="password" name="pw" id="pw" autocomplete="off" />
-        </div>
-        <div class="int__area">
-            <label for="pw2">비밀번호 확인</label>
-            <input type="password" name="pw" id="pw" autocomplete="off" />
-        </div>
-        <div class="btn__area">
-            <input type="submit" id="btn" value="수정">
-            <input type="submit" id="btn" value="취소">
-        </div>
+<div class="todolist_form">
+    <div class="myPage__ToDoList">
+        <form action="/user/login" method="post">
+            {% include 'category.html'%}
+            <div id="manage__box">
+                <h1>계정 관리</h1>
+                <div class="int__area">
+                    <label for="id">유저 닉네임 변경</label>
+                    <input type="text" name="id" id="id" autocomplete="off">
+                </div>
+                <div class="int__area">
+                    <label for="pw">비밀번호 변경</label>
+                    <input type="password" name="pw" id="pw" autocomplete="off" />
+                </div>
+                <div class="int__area">
+                    <label for="pw2">비밀번호 확인</label>
+                    <input type="password" name="pw" id="pw" autocomplete="off" />
+                </div>
+                <div class="btn__area">
+                    <input type="submit" id="btn" value="수정">
+                    <input type="submit" id="btn" value="취소">
+                </div>
+            </div>
+        </form>
     </div>
-</section>       
-    
-</form>
+</div>
+
+
 {% endblock%}

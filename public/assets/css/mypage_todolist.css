@@ -128,3 +128,16 @@ body{
 .button-area > button{
     margin-left: 10px;
 } 
+.submit_button{
+    background-color: black;
+    color: white;
+    border : none;
+    border-radius:20px;
+    min-height:30px; 
+    min-width: 120px;
+}
+.submit_button:hover {
+    background-color:white;
+    transition: 0.2s;
+    color: black;
+}
