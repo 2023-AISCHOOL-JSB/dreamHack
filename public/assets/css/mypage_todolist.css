@@ -1,6 +1,7 @@
 .todolist_form{
     text-align: center;
     width: 100%;
+    height: 100%;
 }
 
 .myPage__ToDoList__Category__detail{
@@ -9,18 +10,20 @@
     font-weight: bold;
     line-height: 5.0;
     margin: 0;
-    padding-inline-start: 1.0em;
+    
     list-style-position: inside;
 }
 .myPage__ToDoList__Category{
-    background-color:rgba(49, 206, 230, 0.7);
-    border-radius: 20px;
+    background-color:rgba(255, 255, 255, 0.7);
+    
     width: 15vw;
-    height: 30vw;
+    height: 100%;
 }
 .myPage__ToDoList{
     display: flex;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 .hero{
     width: 100vw;
@@ -33,8 +36,9 @@
     box-sizing: border-box;
     background-color:rgba(255, 255, 255, 0.7);
     color : black;
-    height: 30vw;
-    border-radius: 20px;
+    height: 100%;
+    border-left : 3px solid black;
+    
 }
 
 .submit{
@@ -129,3 +133,16 @@ body{
 .button-area > button{
     margin-left: 10px;
 } 
+.submit_button{
+    background-color: black;
+    color: white;
+    border : none;
+    border-radius:20px;
+    min-height:30px; 
+    min-width: 120px;
+}
+.submit_button:hover {
+    background-color:white;
+    transition: 0.2s;
+    color: black;
+}
