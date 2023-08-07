@@ -6,37 +6,33 @@
 
 <section id="banner">
    <div class="inner">
-      <form method="post" action="/user/join">
-         <h3> 회원가입 페이지 </h3>
+      <form method="post"  action="/user/join">
+         <h3 class="field_rest" id="join_h3"> JOIN PAGE </h3>
          <div class="fields">
             <div class="field half">
-               <label for="id">ID</label>
-               <input type="text" name="id" id="id" />
+               <input type="text" name="id" id="join_id" placeholder="id">
             </div>
             <div class="field half">
-               <label for="name">이름</label>
-               <input type="text" name="user_name" id="user_name" />
+               <input type="text" name="user_name" id="join_user_name" placeholder="user name">
             </div>
             <div class="field half">
-               <label for="name">비밀번호</label>
-               <input type="password" name="pw" id="password" />
+               <input type="password" name="pw" id="join_password" placeholder="password">
             </div>
             <div class="field half">
-               <label for="name">비밀번호 확인</label>
-               <input type="password" name="pw2" id="password2" />
+               <input type="password" name="pw2" id="join_password" placeholder="password check">
             </div>
-            <div class="field ">
+            <div class="field_rest">
                <label for="name">성별</label>&nbsp;&nbsp;
                남자<input type="radio" name="gender" value="남" id="gender" />&nbsp;&nbsp;
                여자<input type="radio" name="gender" value="여" id="gender" />
             </div>
-            <div class="field half">
+            <div class="field_rest">
                <label for="name">생년 월일</label>
                <input type="date" name="birth_date" id="birth_date" />
             </div>
-            <div class="field half">
+            <div class="field_rest">
                <label for="name"></label>
-               <input type="submit"/>
+               <input id="join_submit" type="submit"/>
             </div>
          </div>
       </form>
