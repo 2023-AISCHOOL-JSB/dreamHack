@@ -1,6 +1,39 @@
 .inner{
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+}
+.fields{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    align-content: center;
+}
+#banner{
+    background-color: rgb(255,255,255,0.7);
+    height: 100%;
+}
+#join_user_name,#join_id,#join_password{
+    margin-top: 3vw;
+}
+.field_rest{
+    margin-top: 2vw;
+    display: flex;
+    justify-content: center;
+}
+#join_h3{
+    font-size: 40px;
+}
+#join_submit{
+    background-color: black;
+    color: white;
+    border-radius : 20px;
+    width: 8vw;
+    height: 2vw;
+}
+#join_submit:hover{
+    background-color: white;
+    color: black;
+    border-radius : 20px;
+    width: 8vw;
+    height: 2vw;
 }

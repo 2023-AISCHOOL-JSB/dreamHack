@@ -60,4 +60,9 @@ router.get('/edit', (req, res) => {
   res.render("edit",{obj : req.session.user});
 });
 
+// 회원 탈퇴 페이지 이동
+router.get('/user_out', (req, res) => {
+  res.render("user_out",{obj : req.session.user});
+});
+
 module.exports = router;

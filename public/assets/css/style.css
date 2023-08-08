@@ -17,12 +17,12 @@
     background-size:cover;
     background-attachment:fixed;
     background-position: center;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .container .header{
     width: 80%;
-    height: 80px;
+    height: 12%;
     margin : 0 auto;
     display : flex;
     justify-content: space-between;
@@ -49,3 +49,11 @@
 .container .nav ul li a:hover{
     color: #1fdfdf;
 }
+
+.category_list:hover{
+    background-color: black;
+    color: white;
+    transition: .3s;
+    border-radius: 20px;
+}
+
