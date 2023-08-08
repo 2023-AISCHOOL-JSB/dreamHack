@@ -31,5 +31,17 @@
     </div>
 </form>
 
+<script>
+    const uploadPost = ()=>{
+        let url="http://localhost:3333/posts/community"
+        fetch (url,{
+            method : "GET",
+            headers : {
+                "Content-Type":"application/json"
+            }
+        }) 
+    }
+
+</script>
 {% endblock %}
 

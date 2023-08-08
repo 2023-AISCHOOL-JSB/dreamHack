@@ -22,6 +22,13 @@ router.post('/write',(req,res)=>{
   })
 })
 
+router.get('/community',(req,res)=>{
+  let sql = "select * from posts"
+  conn.query (sql,(err,rows)=>{
+    res.render("community",{list : rows})
+  })
+})
+
 
 
 module.exports = router;
