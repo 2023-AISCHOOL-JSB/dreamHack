@@ -3,11 +3,6 @@ const router = express.Router();
 const conn = require('../config/database')
 
 
-// 커뮤니티 게시글 작성 페이지 이동
-router.get('/write', (req, res) => {
-  res.render("write",{obj : req.session.user});
-});
-
 // 게시글 작성후 DB 저장, 게시글 내용페이지 이동
 router.post('/write',(req,res)=>{
   console.log(req.body)
@@ -26,19 +21,12 @@ router.post('/write',(req,res)=>{
       conn.query(sql2,(err,rows)=>{
         console.log(rows);
         let num_a = rows[0].post_seq
-        res.send(`'<script>location.href="http://localhost:3333/posts/view?num=${num_a}"</script>'`)
+        res.send(`'<script>location.href="http://localhost:3333/view?num=${num_a}"</script>'`)
       })
 
     }
   })
 })
-
-//게시글 수정 페이지 이동
-router.get('/edit', (req, res) => {
-  res.render("edit",{obj : req.session.user});
-});
-
-
 
 
 module.exports = router;

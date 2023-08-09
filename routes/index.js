@@ -50,6 +50,7 @@ router.get('/user_out', (req, res) => {
   res.render("user_out",{obj : req.session.user});
 });
 
+// 커뮤니티 페이지 이동
 router.get("/community", (req, res) => {
   let page = req.query;
   console.log(page);
@@ -82,6 +83,16 @@ router.get('/view', (req, res) => {
 
   
   //  session = 로그인할 때 생기는 회원 정보. 
+});
+
+// 커뮤니티 게시글 작성 페이지 이동
+router.get('/write', (req, res) => {
+  res.render("write",{obj : req.session.user});
+});
+
+//게시글 수정 페이지 이동
+router.get('/edit', (req, res) => {
+  res.render("edit",{obj : req.session.user});
 });
 
 module.exports = router;
