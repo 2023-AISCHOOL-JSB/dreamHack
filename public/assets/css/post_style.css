@@ -20,17 +20,24 @@ a {
      */
     background: #fff;
     padding: 50px;
-    width: 100%;
-    height: 100vh;
+    width: 62%;
+    height: 100%;
+    /* border-radius: 20px; */
+    /* border : solid 2px skyblue; */
+}
 
+.board_wrap h1{
+    font-size: 10px;
 }
 
 .board_title {
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 .board_title strong {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .board_title p {
@@ -282,4 +289,10 @@ a {
     box-sizing: border-box;
     border: 0;
     resize: vertical;
+}
+
+.board_community{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
