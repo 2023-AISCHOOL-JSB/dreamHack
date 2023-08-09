@@ -45,6 +45,7 @@ a {
 
 .board_title strong {
     font-size: 2rem;
+    font-family: 'KotraBold';
 }
 
 .board_title p {
@@ -237,6 +238,9 @@ a {
 .board_write .title,
 .board_write .info {
     padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .board_write .info {
@@ -280,9 +284,9 @@ a {
     box-sizing: border-box;
 }
 
-.board_write .title input[type="text"] {
+/* .board_write .title input[type="text"] {
     width: 80%;
-}
+} */
 
 .board_write .cont {
     border-bottom: 1px solid #000;
