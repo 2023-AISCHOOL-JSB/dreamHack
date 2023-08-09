@@ -1,10 +1,10 @@
-.todolist_form{
+.todolist_form {
     text-align: center;
     width: 100%;
     height: 88%;
 }
 
-.myPage__ToDoList__Category__detail{
+.myPage__ToDoList__Category__detail {
     list-style-type: none;
     list-style: none;
     font-weight: bold;
@@ -13,7 +13,8 @@
     margin-top: 8vh;
     list-style-position: inside;
 }
-.myPage__ToDoList__Category{
+
+.myPage__ToDoList__Category {
     /* background-color:rgba(207, 255, 229, 0); */
     border-radius: 20px;
     width: 15%;
@@ -21,14 +22,16 @@
     /* border:2px solid skyblue; */
 
 }
-.myPage__ToDoList{
+
+.myPage__ToDoList {
     display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
     justify-content: center;
 }
-.hero{
+
+.hero {
     width: 100vw;
 }
 
@@ -38,71 +41,116 @@
     padding: 0 30px;
     box-sizing: border-box;
     /* background-color:rgba(207, 255, 229, 0); */
-    color : black;
+    color: black;
     height: 100%;
     border-radius: 20px;
     /* border-left : 3px solid black; */
     /* border:2px solid skyblue ; */
 }
 
-.submit{
+.submit {
     display: inline-block;
-    min-width: 102px;
-
+    min-width: 120px;
+    height: 30px;
     margin-left: 10px;
-    padding: 10px;
-    border: 1px solid #000;
+    border: 1px solid transparent;
     border-radius: 2px;
-    font-size: 1.4rem;
     background-color: black;
-    color : white;
+    color: white;
+    border-radius: 20px;
+    font-family: 'KotraBold';
 }
 
-body{
+.submit:hover {
+    display: inline-block;
+    min-width: 120px;
+    height: 30px;
+    margin-left: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background-color: white;
+    color: black;
+    transition: 0.2s;
+    border-radius: 20px;
+    font-family: 'KotraBold';
+}
+
+
+body {
     background-repeat: no-repeat;
     background-size: cover;
     font-family: "Nanum Gothic";
 }
 
-/* todoList 실습 파일에서 가져온 css (javascritp폴더 참고)*/
-.routine_container{
+.routine_container {
     background-color: white;
-
     /* vh: viewport height로 현재 브라우저 높이를 꽉 채울 때 100vh를 사용 */
     height: 100vh;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-    padding: 70px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
     overflow: auto;
 }
 
-.input-area{
+#todo_h1{
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 15px 30px 15px 30px;
+    font-family: 'KotraBold';
+}
+
+.input-area {
     display: flex;
     margin-bottom: 10px;
 }
-#add-button{
-    margin-left: 5px;
+
+#add-button {
+    min-width: 120px;
+    height: 30px;
+    margin-left: 10px;
+    color: white;
+    border: 1px solid #000;
+    border-radius: 20px;
+    background-color: black;
+    font-family: 'KotraBold';
 }
 
-.task-tabs{
+#add-button:hover {
+    min-width: 120px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 2px;
+    background-color: white;
+    color: black;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    font-family: 'KotraBold';
+    background-color: white;
+    transition: 0.2s;
+    color: black;
+}
+
+.task-tabs {
     display: flex;
     border: 1px solid gray;
 }
 
-.task-tabs > div{
+.task-tabs>div {
     padding: 10px;
     cursor: pointer;
 }
 
-.task-tabs > div:hover{
+.task-tabs>div:hover {
     background-color: #00a8ff;
-    color:white;
+    color: white;
 }
 
-.task-area{
+.task-area {
     position: relative;
 }
 
-.task{
+.task {
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -112,21 +160,21 @@ body{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.task span{
+.task span {
     box-sizing: border-box;
     padding: 10px;
     line-height: 38px;
 }
 
-.task-done{
+.task-done {
     background-color: lightgray;
 }
 
-.task-done > span{
+.task-done>span {
     text-decoration: line-through;
 }
 
-.button-area{
+.button-area {
     display: flex;
     padding: 10px 10px 10px 0;
     background-color: white;
@@ -134,20 +182,22 @@ body{
     border-bottom-right-radius: 10px;
 }
 
-.button-area > button{
+.button-area>button {
     margin-left: 10px;
-} 
-.submit_button{
+}
+
+.submit_button {
     background-color: black;
     color: white;
-    border : none;
-    border-radius:20px;
-    min-height:30px; 
+    border: none;
+    border-radius: 20px;
+    min-height: 30px;
     min-width: 120px;
     font-family: 'KotraBold';
 }
+
 .submit_button:hover {
-    background-color:white;
+    background-color: white;
     transition: 0.2s;
     color: black;
 }
