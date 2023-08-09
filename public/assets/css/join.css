@@ -7,6 +7,7 @@
     flex-direction: column;
     /* justify-content: space-around; */
     align-content: center;
+    font-family: 'KotraBold';
 }
 #banner{
     background-color: rgb(255,255,255,0.7);
@@ -22,6 +23,7 @@
 }
 #join_h3{
     font-size: 40px;
+    font-family: 'KotraBold';
 }
 #join_submit{
     background-color: black;
@@ -29,6 +31,7 @@
     border-radius : 20px;
     width: 8vw;
     height: 2vw;
+    font-family: 'KotraBold';
 }
 #join_submit:hover{
     background-color: white;
