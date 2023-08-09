@@ -2,6 +2,9 @@
 {% extends 'layout.html'%}
 
 {% block content%}
+<link rel="stylesheet" href="/assets/css/post_style.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/mypage_todolist.css">
 
 <form action="/posts/write" method="post" id="myForm">
     <div class="board_wrap">
@@ -24,13 +27,11 @@
                 </div>
             </div>
             <div class="bt_wrap">
+                <input type="submit" name="" class="submit">
                 <a href="community">취소</a>
             </div>
         </div>
-        <input type="submit" name="" id="">
     </div>
 </form>
-
-
 {% endblock %}
 
