@@ -20,6 +20,24 @@
     /* overflow: hidden; */
 }
 
+.container_layout{
+    width: 100%;
+    height : 100vh;
+    /* background: url('../../images/rich3.jpg'); */
+    background-size:cover;
+    background-attachment:fixed;
+    background-position: center;
+}
+
+.container_layout .header{
+    width: 80%;
+    height: 12%;
+    margin : 0 auto;
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .container .header{
     width: 80%;
     height: 12%;
@@ -29,15 +47,32 @@
     align-items: center;
 }
 
+.container_layout .header h1 a{
+    text-decoration: none;
+    color : black;
+    font-family : abster;
+}
+
 .container .header h1 a{
     text-decoration: none;
     color : white;
     font-family : abster;
 }
 
+.container_layout .nav ul li{
+    display: inline-block;
+    margin: 0 10px;
+}
+
 .container .nav ul li{
     display: inline-block;
     margin: 0 10px;
+}
+
+.container_layout .nav ul li a{
+    text-decoration: none;
+    color : black;
+
 }
 
 .container .nav ul li a{
@@ -46,14 +81,40 @@
 
 }
 
+.container_layout .nav ul li a:hover{
+    color: #1fdfdf;
+}
+
 .container .nav ul li a:hover{
     color: #1fdfdf;
 }
 
-.category_list:hover{
-    background-color: black;
-    color: white;
+/* .category_list{
+    color: black;
     transition: .3s;
     border-radius: 20px;
+    border: solid 2px skyblue;
+} */
+
+.category_list:hover{
+    /* background-color: black;
+    color: white;
+    transition: .3s;
+    border-radius: 20px; */
+    color: black;
+    transition: .3s;
+    border-radius: 20px;
+    border: solid 2px skyblue;
 }
 
+.manage_h1{
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    /* border: 2px solid skyblue; */
+    border-radius: 20px;
+    padding: 15px 30px 15px 30px;
+}

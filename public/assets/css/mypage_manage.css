@@ -19,6 +19,9 @@ h1{
     align-items: center;
     margin-bottom : 50px;
     margin-top: 50px;
+    /* border: 2px solid skyblue; */
+    border-radius: 20px;
+    padding: 15px 30px 15px 30px;
 }
 
 .int__area{
