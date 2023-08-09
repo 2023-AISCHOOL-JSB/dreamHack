@@ -62,8 +62,13 @@ router.get('/edit', (req, res) => {
 
 // 커뮤니티 페이지 이동
 router.get('/community',(req,res)=>{
+  let page = req.query
+  console.log(page);
   let sql = "select * from posts"
+
   conn.query (sql,(err,rows)=>{
+    let allPosts = rows.length
+    console.log(allPosts);
     res.render('community',{obj : req.session.user ,list : rows})
   })
 })
