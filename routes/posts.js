@@ -33,40 +33,10 @@ router.post('/write',(req,res)=>{
   })
 })
 
-// 작성한 게시글 내용 페이지 이동
-router.get('/view', (req, res) => {
-  console.log(req.query);
-
-  let sql = 'select * from posts where post_seq = ?'
-
-  let post_num = req.query.num;
-  // sql에 쿼리문이 들어간다 ? 는 변수이다
-
-  conn.query(sql,[post_num],(err,rows)=>{
-    // conn 은 require('../config/database') 이다
-    // query는 conn에 있는 메서드이다. sql문을 사용할 수 있게해준다.
-    // rows 에는 32번째 줄에 sql의 결과물이 들어간다.
-    res.render("view",{obj : req.session.user , postContent : rows});
-    // req.session.user 정보가 obj라는 이름으로 view에 넘어간다.
-    // rows 정보가 postContent라는 이름으로 view에 넘어간다.
-  })
-
-  
-  //  session = 로그인할 때 생기는 회원 정보. 
-});
-
 //게시글 수정 페이지 이동
 router.get('/edit', (req, res) => {
   res.render("edit",{obj : req.session.user});
 });
-
-// 커뮤니티 페이지 이동
-router.get('/community',(req,res)=>{
-  let sql = "select * from posts"
-  conn.query (sql,(err,rows)=>{
-    res.render('community',{obj : req.session.user ,list : rows})
-  })
-})
 
 
 

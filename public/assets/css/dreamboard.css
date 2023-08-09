@@ -1,7 +1,7 @@
 .tool_bar {
     width: 20%;
     /* 사이드바의 너비를 20%로 지정합니다. */
-    height: 95vh;
+    height: 84vh;
     position: fixed;
     top: 50%;
     left: 0;
@@ -12,6 +12,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
 }
+.tool_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 
 .back {
     background-color: rgba(70, 131, 180, 0.644);
