@@ -32,3 +32,14 @@
     margin-bottom: 20px;
 
 }
+#myForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#form_view{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

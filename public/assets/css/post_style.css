@@ -59,7 +59,7 @@ a {
     font-size: 0;
 }
 
-.bt_wrap a {
+/* .bt_wrap a {
     display: inline-block;
     min-width: 102px;
     margin-left: 10px;
@@ -67,7 +67,7 @@ a {
     border: 1px solid #000;
     border-radius: 2px;
     font-size: 1.4rem;
-}
+} */
 
 .bt_wrap a:first-child {
     margin-left: 0;
@@ -266,6 +266,8 @@ a {
     display: inline-block;
     vertical-align: middle;
     font-size: 1.4rem;
+    font-family: 'KotraBold';
+
 }
 
 .board_write .title dt,
@@ -300,6 +302,7 @@ a {
     box-sizing: border-box;
     border: 0;
     resize: vertical;
+    font-family: 'KotraBold';
 }
 
 .board_community{
