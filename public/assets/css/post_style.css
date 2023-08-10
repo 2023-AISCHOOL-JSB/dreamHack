@@ -90,6 +90,7 @@ a {
 
 .board_list > div.top {
     border-bottom: 1px solid #999;
+    font-family: 'KotraBold';
 }
 
 .board_list > div:last-child {
@@ -100,11 +101,12 @@ a {
     display: inline-block;
     padding: 15px 0;
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 15px;
 }
 
 .board_list > div.top > div {
     font-weight: 600;
+    font-size: 17px;
 }
 
 .board_list .num {
@@ -144,7 +146,6 @@ a {
     height: 32px;
     box-sizing: border-box;
     vertical-align: middle;
-    border: 1px solid #ddd;
     border-left: 0;
     line-height: 100%;
 }
@@ -161,14 +162,13 @@ a {
 }
 
 .board_page a.num.on {
-    border-color: #000;
-    background: #000;
-    color: #fff;
+    background: white;
+    color: black;
 }
 
-.board_page a:first-child {
+/* .board_page a:first-child {
     border-left: 1px solid #ddd;
-}
+} */
 
 .board_view {
     width: 100%;
@@ -309,5 +309,5 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3%;
+    margin-top: 7%;
 }
