@@ -46,12 +46,14 @@ body{
 }
 
 .container_layout .header{
-    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
     height: 12%;
     margin : 0 auto;
     display : flex;
     justify-content: space-between;
     align-items: center;
+    background-color: black;
 }
 
 .container .header{
@@ -65,7 +67,7 @@ body{
 
 .container_layout .header h1 a{
     text-decoration: none;
-    color : black;
+    color : white;
     font-family : abster;
 }
 
@@ -78,6 +80,7 @@ body{
 .container_layout .nav ul li{
     display: inline-block;
     margin: 0 10px;
+    
 }
 
 .container .nav ul li{
@@ -87,7 +90,7 @@ body{
 
 .container_layout .nav ul li a{
     text-decoration: none;
-    color : black;
+    color : white;
 
 }
 

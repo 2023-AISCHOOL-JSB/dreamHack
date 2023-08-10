@@ -24,7 +24,7 @@ a {
     margin: 100px auto;
      */
     background: #fff;
-    padding: 50px;
+    /* padding: 50px; */
     width: 62%;
     height: 100%;
     /* border-radius: 20px; */
@@ -309,4 +309,5 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 3%;
 }
