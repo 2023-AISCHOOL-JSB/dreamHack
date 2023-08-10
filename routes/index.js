@@ -68,7 +68,7 @@ router.get("/community/", (req, res) => {
   conn.query(sql, (err, rows) => {
     let allPosts = rows.length;
     let itemCntPerPage = 5; // 한 페이지에 보이는 게시글 수
-    let itemCntPerPagingNum = 5; // 한 번에 보이는 페이징 넘버 수
+    // let itemCntPerPagingNum = 5; // 한 번에 보이는 페이징 넘버 수
     let totalPage = allPosts % itemCntPerPage != 0 ? parseInt(allPosts / itemCntPerPage)+1 : parseInt(allPosts / itemCntPerPage);
     // console.log("totalPage : " + totalPage);
     let endPageNum = (parseInt((page - 1) / itemCntPerPage) + 1) * itemCntPerPage;
