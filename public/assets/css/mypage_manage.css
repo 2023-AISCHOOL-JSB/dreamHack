@@ -8,7 +8,7 @@ section{
     align-items: center;
     font-size: 25px;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 5%;
     font-family: 'KotraBold';
 }
 
@@ -24,6 +24,7 @@ h1{
     border-radius: 20px;
     padding: 15px 30px 15px 30px;
     font-family: 'KotraBold';
+    font-size: 37.5px;
 }
 
 .int__area{
@@ -31,7 +32,7 @@ h1{
     justify-content: center;
     align-items: center;
     padding: 5px;
-    
+    margin-bottom: 15px;
 }
 
 .int__area.input{
@@ -49,7 +50,7 @@ label {
   }
 
   input[type=text] {
-    width: 500px;
+    width:800px;
     height: 42px;
     font-size: 15px;
     border: 3px solid black;
@@ -58,8 +59,6 @@ label {
     padding-left: 10px;
     background-color: white;
     font-family: 'KotraBold';
-    
-    
 }
 
 input[type=password] {

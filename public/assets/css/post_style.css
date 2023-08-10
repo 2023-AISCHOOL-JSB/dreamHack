@@ -38,7 +38,8 @@ a {
 }
 
 .board_title {
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
 }
@@ -56,7 +57,9 @@ a {
 .bt_wrap {
     margin-top: 30px;
     text-align: center;
-    font-size: 0;
+    /* font-size: 0; */
+    display: flex;
+    justify-content: center;
 }
 
 /* .bt_wrap a {
@@ -76,6 +79,20 @@ a {
 .bt_wrap a.on {
     background: #000;
     color: #fff;
+    width: 120px;
+    display: block;
+    border: 2px solid black;
+    transition: 0.2s;
+    border-radius: 20px;
+}
+.bt_wrap a.on:hover {
+    background: white;
+    color: black;
+    width: 120px;
+    display: block;
+    border: 2px solid white;
+    border-radius: 20px;
+    transition: 0.2s;
 }
 
 .board_list {
@@ -284,6 +301,7 @@ a {
 .board_write .info input[type="password"] {
     padding: 10px;
     box-sizing: border-box;
+    width: 300px;
 }
 
 /* .board_write .title input[type="text"] {
@@ -309,5 +327,5 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 7%;
+    margin-top: 4%;
 }

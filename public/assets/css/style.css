@@ -113,8 +113,7 @@ body{
     transition: .3s;
     border-radius: 20px;
     border: solid 3px transparent;
-    
-    
+
 }
 
 .category_list:hover{
@@ -122,10 +121,11 @@ body{
     color: white;
     transition: .3s;
     border-radius: 20px; */
-    color: orange;
+    color: black;
     transition: .3s;
     border-radius: 20px;
-    border: solid 3px orange;
+    border-color: black;
+    /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25); */
     
 }
 
