@@ -13,9 +13,11 @@
     display: flex;
     justify-content: space-between; /* 각 요소를 가로로 공간을 벌려서 정렬 */
     align-items: flex-start; /* 요소를 수직 중앙으로 정렬 */
-    font-family: 'KotraBold';
+    
     font-size:11px;
     margin-left: 18%;
+    margin-top:1.5%;
+    margin-bottom: 1.5%;
 }
 
 .footer_description {
@@ -28,8 +30,31 @@
     text-align: left;
 }
 
-.footer_line{
-    width:80%;
-    border-top: 2px solid black;
-    margin-bottom:10px;
+
+.footer_line{   
+    margin-left: 10%;
+    width: 80%;
+    border-color:gray;
+    
+}
+.footer{
+    background-color: black;
+    color:white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-top: 1px solid gray;
+}
+
+.team_info{
+    color:gray;
+    font-size: 9px;
+}
+.footer_content{
+    color:gray;
+    font-size: 9px;
+}
+
+.footer_service{
+    color:gray;
+    font-size: 9px;
 }
