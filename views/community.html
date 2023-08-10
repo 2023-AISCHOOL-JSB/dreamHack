@@ -1,6 +1,6 @@
-{% extends 'layout.html'%}
+{% extends 'layout.html' %}
 
-{% block content%}
+{% block content %}
 
 <div class="board_community">
     <div class="board_wrap">
@@ -17,7 +17,7 @@
                     <div class="count">조회</div>
                 </div>
 
-                {%for i in list%}
+                {% for i in list %}
                 <div>
                     <div class="num">{{i.post_seq}}</div>
                     <div class="title"><a href="view?num={{i.post_seq}}">{{i.post_title}}</a></div>
@@ -25,14 +25,20 @@
                     <div class="date">{{i.posted_at}}</div>
                     <div class="count">{{i.post_views}}</div>
                 </div>
-                {%endfor%}
+                {% endfor %}
             </div>
             <div class="board_page">
-                <a href="#" class="bt first"><<</a>
-                <a href="#" class="bt prev"><</a>
-                <a href="community?page=1&pageSize=5" class="num on">1</a>
-                <a href="#" class="bt next">></a>
-                <a href="#" class="bt last">>></a>
+                {% if  term !== 0 %}
+                <a href="community?page=1" class="bt first"><<</a>
+                <a href="community?page={{startPageNum-1}}" class="bt prev"><</a>
+                {% endif %}
+                {% for i in range(startPageNum,endPageNum+1) %}
+                    <a href="community?page={{i}}" class="num on">{{i}}</a>
+                {% endfor %}
+                {% if endPageNum !== totalPage%}
+                <a href="community?page={{endPageNum+1}}" class="bt next">></a>
+                <a href="community?page={{totalPage}}" class="bt last">>></a>
+                {% endif %}
             </div>
             <div class="bt_wrap">
                 <button class="submit_button"><a href="/write" >등록</a></button>

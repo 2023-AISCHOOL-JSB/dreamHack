@@ -52,19 +52,47 @@ router.get('/user_out', (req, res) => {
 
 // 커뮤니티 페이지 이동
 
+
 router.get("/community/", (req, res) => {
   let page = req.query.page;
+  console.log(page);
   let sql =
-    "select post_seq, post_title, post_conent, post_file, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts order by post_seq desc";
+    "select post_seq, post_title, post_conent, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts order by post_seq desc";
   if (page == undefined){
     page = 1;
   }
-
+  if (page <= 0) {
+    page = 1;
+  }
+  
   conn.query(sql, (err, rows) => {
     let allPosts = rows.length;
+    let itemCntPerPage = 5; // 한 페이지에 보이는 게시글 수
+    let itemCntPerPagingNum = 5; // 한 번에 보이는 페이징 넘버 수
+    let totalPage = allPosts % itemCntPerPage != 0 ? parseInt(allPosts / itemCntPerPage)+1 : parseInt(allPosts / itemCntPerPage);
+    console.log("totalPage : " + totalPage);
+    let endPageNum = (parseInt((page - 1) / itemCntPerPage) + 1) * itemCntPerPage;
+    let term = parseInt((page - 1) / itemCntPerPage);
+    console.log("endPageNum : " + endPageNum);
+    let startPageNum = endPageNum - itemCntPerPage + 1;
 
-    console.log(allPosts);
-    res.render("community", { obj: req.session.user, list: rows });
+    if (page >= totalPage) {
+      endPageNum = totalPage;
+      startPageNum = page;
+    }
+    let sql2 =
+      "select post_seq, post_title, post_conent, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts order by post_seq desc limit ? ,5";
+    postIndex = (page-1) * itemCntPerPage;
+    conn.query(sql2,[postIndex],(err, rows)=>{
+      res.render("community", {
+        obj: req.session.user,
+        list: rows,
+        term: term,
+        totalPage: totalPage,
+        endPageNum: endPageNum,
+        startPageNum: startPageNum,
+      });
+    }) 
   });
 });
 
@@ -73,6 +101,7 @@ router.get('/view', (req, res) => {
   console.log(req.query);
 
   let sql = 'select * from posts where post_seq = ?'
+
 
   let post_num = req.query.num;
   // sql에 쿼리문이 들어간다 ? 는 변수이다

@@ -16,6 +16,7 @@
         @import url('assets/css/post_style.css');
         @import url('assets/css/mypage_todolist.css');
         @import url('assets/css/join.css');
+        @import url('assets/css/footer.css');
     </style>
 </head>
 
@@ -45,8 +46,9 @@
         <!-- 페이지 별로 바뀌어야할 부분 -->
         {% block content %}
         {% endblock %}
-
     </div>
+
+    {% include 'footer.html' %}
 </body>
 
 </html>
