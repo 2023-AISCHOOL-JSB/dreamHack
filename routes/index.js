@@ -54,7 +54,8 @@ router.get('/user_out', (req, res) => {
 
 router.get("/community/", (req, res) => {
   let page = req.query.page;
-  let sql = "select * from posts";
+  let sql =
+    "select post_seq, post_title, post_conent, post_file, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts order by post_seq desc";
   if (page == undefined){
     page = 1;
   }
