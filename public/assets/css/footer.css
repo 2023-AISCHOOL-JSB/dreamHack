@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'KotraBold';
+    font-weight: normal;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/kotra/KotraBold.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/kotra/KotraBold.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/kotra/KotraBold.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/kotra/KotraBold.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/kotra/KotraBold.ttf') format("truetype");
+    font-display: swap;
+}
+.footer_container {
+    display: flex;
+    justify-content: space-between; /* 각 요소를 가로로 공간을 벌려서 정렬 */
+    align-items: flex-start; /* 요소를 수직 중앙으로 정렬 */
+    font-family: 'KotraBold';
+    font-size:11px;
+    margin-left: 18%;
+}
+
+.footer_description {
+    flex: 1; /* 각 요소가 동일한 너비로 설정됨 */
+    text-align: center; /* 내용 가운데 정렬 */
+}
+
+.footer_description p{
+    margin:1px 0;
+    text-align: left;
+}
+
+.footer_line{
+    width:80%;
+    border-top: 2px solid black;
+    margin-bottom:10px;
+}

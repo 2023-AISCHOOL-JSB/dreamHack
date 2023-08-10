@@ -109,7 +109,9 @@ body{
     color: black;
     transition: .3s;
     border-radius: 20px;
-    border: solid 2px transparent;
+    border: solid 3px transparent;
+    
+    
 }
 
 .category_list:hover{
@@ -117,11 +119,11 @@ body{
     color: white;
     transition: .3s;
     border-radius: 20px; */
-    color: white;
+    color: orange;
     transition: .3s;
     border-radius: 20px;
-    border: solid 2px black;
-    background-color: black;
+    border: solid 3px orange;
+    
 }
 
 .manage_h1{
