@@ -70,16 +70,18 @@ router.get("/community/", (req, res) => {
     let itemCntPerPage = 5; // 한 페이지에 보이는 게시글 수
     let itemCntPerPagingNum = 5; // 한 번에 보이는 페이징 넘버 수
     let totalPage = allPosts % itemCntPerPage != 0 ? parseInt(allPosts / itemCntPerPage)+1 : parseInt(allPosts / itemCntPerPage);
-    console.log("totalPage : " + totalPage);
+    // console.log("totalPage : " + totalPage);
     let endPageNum = (parseInt((page - 1) / itemCntPerPage) + 1) * itemCntPerPage;
     let term = parseInt((page - 1) / itemCntPerPage);
-    console.log("endPageNum : " + endPageNum);
+    // console.log("endPageNum : " + endPageNum);
     let startPageNum = endPageNum - itemCntPerPage + 1;
 
-    if (page >= totalPage) {
+    if (endPageNum >= totalPage) {
       endPageNum = totalPage;
-      startPageNum = page;
     }
+
+
+
     let sql2 =
       "select post_seq, post_title, post_conent, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts order by post_seq desc limit ? ,5";
     postIndex = (page-1) * itemCntPerPage;
@@ -89,7 +91,7 @@ router.get("/community/", (req, res) => {
         list: rows,
         term: term,
         totalPage: totalPage,
-        endPageNum: endPageNum,
+        endPageNum: endPageNum+1,
         startPageNum: startPageNum,
       });
     }) 
@@ -100,7 +102,8 @@ router.get("/community/", (req, res) => {
 router.get('/view', (req, res) => {
   console.log(req.query);
 
-  let sql = 'select * from posts where post_seq = ?'
+  let sql =
+    "select post_seq, post_title, post_conent, post_file, date_format(posted_at, '%Y-%m-%d %h:%i:%s') as posted_at, post_views, post_likes, user_id from posts where post_seq = ?";
 
 
   let post_num = req.query.num;

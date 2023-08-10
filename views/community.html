@@ -32,7 +32,7 @@
                 <a href="community?page=1" class="bt first"><<</a>
                 <a href="community?page={{startPageNum-1}}" class="bt prev"><</a>
                 {% endif %}
-                {% for i in range(startPageNum,endPageNum+1) %}
+                {% for i in range(startPageNum, endPageNum) %}
                     <a href="community?page={{i}}" class="num on">{{i}}</a>
                 {% endfor %}
                 {% if endPageNum !== totalPage%}
