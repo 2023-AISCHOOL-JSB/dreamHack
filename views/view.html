@@ -38,7 +38,9 @@
             </div>
             <div class="bt_wrap">
                 <a href="community" class="on">목록</a>
-                <a href="edit">수정</a>
+                {% if postContent[0].user_id == obj.user_id %}
+                <a href="edit" class="on">수정</a>
+                {% endif %}
             </div>
         </div>
     </div>

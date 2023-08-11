@@ -84,6 +84,7 @@ a {
     border: 2px solid black;
     transition: 0.2s;
     border-radius: 20px;
+    margin-right: 10px;
 }
 .bt_wrap a.on:hover {
     background: white;
