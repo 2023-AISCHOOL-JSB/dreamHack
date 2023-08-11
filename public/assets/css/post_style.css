@@ -84,6 +84,7 @@ a {
     border: 2px solid black;
     transition: 0.2s;
     border-radius: 20px;
+    margin-right: 10px;
 }
 .bt_wrap a.on:hover {
     background: white;
@@ -155,6 +156,7 @@ a {
     margin-top: 30px;
     text-align: center;
     font-size: 0;
+    font-family: 'KotraBold';
 }
 
 .board_page a {
