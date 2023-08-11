@@ -35,7 +35,7 @@
                 {% for i in range(startPageNum, endPageNum) %}
                     <a href="community?page={{i}}" class="num on">{{i}}</a>
                 {% endfor %}
-                {% if endPageNum !== totalPage%}
+                {% if endPageNum-1 !== totalPage%}
                 <a href="community?page={{endPageNum+1}}" class="bt next">></a>
                 <a href="community?page={{totalPage}}" class="bt last">>></a>
                 {% endif %}
