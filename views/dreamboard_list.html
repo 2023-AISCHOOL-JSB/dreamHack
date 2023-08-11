@@ -1,0 +1,38 @@
+{% extends 'layout.html'%}
+
+{% block content%}
+<div class="todolist_form">
+    <div class="myPage__ToDoList">
+        {% include 'category.html'%}
+        <div class="todolist_board_wrap">
+            <div class="board_title">
+                <strong>마이 드림보드</strong>
+            </div>
+            <div class="board_list_wrap">
+                <div class="board_list" id="main">
+                    <div class="top">
+                        <div class="num"><p>번호</p></div>
+                        <div class="title"><p>제목</p></div>
+                        <div class="writer"><p>글쓴이</p></div>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+                <div class="board_page">
+                    <a href="#" class="bt first">
+                       <<
+                            <a href="#" class="bt prev">
+                               <
+                                    <a href="#" class="num on">1</a>
+                                    <a href="#" class="bt next">></a>
+                                    <a href="#" class="bt last">>></a>
+                </div>
+                <div class="bt_wrap">
+                    <button onclick="location.href='todolist_write'" type="submit" class="submit_button">등록</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

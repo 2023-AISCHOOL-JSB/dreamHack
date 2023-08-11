@@ -132,4 +132,15 @@ router.get('/edit', (req, res) => {
   res.render("edit",{obj : req.session.user});
 });
 
+// 투두리스트 사용자별 콘텐츠 내용
+router.get('/todolist_content',(req,res)=>{
+  res.render("todolist_content",{obj : req.session.user});
+})
+
+//마이드림보드 리스트
+router.get('/dreamboard_list',(req,res)=>{
+  res.render("dreamboard_list",{obj : req.session.user});
+})
+
+
 module.exports = router;
