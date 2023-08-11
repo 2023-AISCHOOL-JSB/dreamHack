@@ -20,7 +20,7 @@
                 {% for i in list %}
                 <div>
                     <div class="num">{{i.post_seq}}</div>
-                    <div class="title"><a href="view?num={{i.post_seq}}">{{i.post_title}}</a></div>
+                    <div class="title"><a href="count?num={{i.post_seq}}">{{i.post_title}}</a></div>
                     <div class="writer">{{i.user_id}}</div>
                     <div class="date">{{i.posted_at}}</div>
                     <div class="count">{{i.post_views}}</div>

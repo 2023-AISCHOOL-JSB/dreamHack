@@ -68,13 +68,13 @@ router.get("/community/", (req, res) => {
   conn.query(sql, (err, rows) => {
     let allPosts = rows.length;
     let itemCntPerPage = 5; // 한 페이지에 보이는 게시글 수
-    // let itemCntPerPagingNum = 5; // 한 번에 보이는 페이징 넘버 수
+    let itemCntPerPagingNum = 5; // 한 번에 보이는 페이징 넘버 수
     let totalPage = allPosts % itemCntPerPage != 0 ? parseInt(allPosts / itemCntPerPage)+1 : parseInt(allPosts / itemCntPerPage);
-    // console.log("totalPage : " + totalPage);
-    let endPageNum = (parseInt((page - 1) / itemCntPerPage) + 1) * itemCntPerPage;
-    let term = parseInt((page - 1) / itemCntPerPage);
-    // console.log("endPageNum : " + endPageNum);
-    let startPageNum = endPageNum - itemCntPerPage + 1;
+    console.log("totalPage : " + totalPage);
+    let endPageNum = (parseInt((page - 1) / itemCntPerPagingNum) + 1) * itemCntPerPagingNum;
+    let term = parseInt((page - 1) / itemCntPerPagingNum);
+    console.log("endPageNum : " + endPageNum);
+    let startPageNum = endPageNum - itemCntPerPagingNum + 1;
 
     if (endPageNum >= totalPage) {
       endPageNum = totalPage;
@@ -83,9 +83,10 @@ router.get("/community/", (req, res) => {
 
 
     let sql2 =
-      "select post_seq, post_title, post_conent, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts order by post_seq desc limit ? ,5";
+      "select post_seq, post_title, post_conent, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts order by post_seq desc limit ? ,?";
     postIndex = (page-1) * itemCntPerPage;
-    conn.query(sql2,[postIndex],(err, rows)=>{
+
+    conn.query(sql2,[postIndex,itemCntPerPage],(err, rows)=>{
       res.render("community", {
         obj: req.session.user,
         list: rows,
@@ -97,11 +98,37 @@ router.get("/community/", (req, res) => {
     }) 
   });
 });
+router.get('/count', (req, res) => {
+  let sql1 =`
+  select post_views
+  from posts
+  where post_seq = ?
+  `
+  let post_num = req.query.num;
+  var postView = 0;
+  conn.query(sql1, [post_num], (err, rows) => {
+    console.log('rows',rows);
+    postView = rows[0].post_views + 1;
 
+    let sql = `
+    UPDATE posts
+       SET
+        post_views = ?
+    WHERE post_seq = ?`
+    conn.query(sql, [postView, post_num], (err, rows) => {
+    console.log('update',postView)
+    res.redirect("view?num="+String(post_num))
+    })
+  })
+  
+
+
+
+    
+});
 // 작성한 게시글 내용 페이지 이동
 router.get('/view', (req, res) => {
-  console.log(req.query);
-
+  // console.log(req.query);
   let sql =
     "select post_seq, post_title, post_conent, post_file, date_format(posted_at, '%Y-%m-%d %h:%i:%s') as posted_at, post_views, post_likes, user_id from posts where post_seq = ?";
 
@@ -110,12 +137,18 @@ router.get('/view', (req, res) => {
   // sql에 쿼리문이 들어간다 ? 는 변수이다
 
   conn.query(sql,[post_num],(err,rows)=>{
+    
+    // console.log('값 : ',row)
+    
     // conn 은 require('../config/database') 이다
     // query는 conn에 있는 메서드이다. sql문을 사용할 수 있게해준다.
     // rows 에는 32번째 줄에 sql의 결과물이 들어간다.
-    res.render("view",{obj : req.session.user , postContent : rows});
     // req.session.user 정보가 obj라는 이름으로 view에 넘어간다.
     // rows 정보가 postContent라는 이름으로 view에 넘어간다.
+    
+    
+    res.render("view",{obj : req.session.user , postContent : rows});
+
   })
 
   
