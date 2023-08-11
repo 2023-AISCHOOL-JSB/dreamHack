@@ -142,5 +142,10 @@ router.get('/dreamboard_list',(req,res)=>{
   res.render("dreamboard_list",{obj : req.session.user});
 })
 
+//마이드림보드 컨텐츠
+router.get('/mydreamboard_content',(req,res)=>{
+  res.render("mydreamboard_content",{obj : req.session.user});
+})
+
 
 module.exports = router;
