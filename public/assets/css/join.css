@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
 }
+
 .fields{
     display: flex;
     flex-direction: column;
@@ -9,22 +10,28 @@
     align-content: center;
     font-family: 'KotraBold';
 }
+
 #banner{
     background-color: rgb(255,255,255,0.7);
     height: 100%;
 }
+
 #join_user_name,#join_id,#join_password{
     margin-top: 3vw;
+    width: 500px;
 }
+
 .field_rest{
     margin-top: 2vw;
     display: flex;
     justify-content: center;
 }
+
 #join_h3{
     font-size: 40px;
     font-family: 'KotraBold';
 }
+
 #join_submit{
     background-color: black;
     color: white;
@@ -33,6 +40,7 @@
     height: 2vw;
     font-family: 'KotraBold';
 }
+
 #join_submit:hover{
     background-color: white;
     color: black;
