@@ -30,7 +30,13 @@ router.get('/mypage_manage',(req,res)=>{
 
 // 마이페이지 투두리스트 페이지이동
 router.get('/mypage_todolist',(req,res)=>{
-  res.render("mypage_todolist",{obj : req.session.user});
+
+  let sql = "select goal_seq, goal_title, complete_percent from goals"
+
+  conn.query(sql,(err, rows)=>{
+    res.render("mypage_todolist", { obj: req.session.user , goals : rows});
+  })
+
 })
 
 // 투두리스트 작성
@@ -50,9 +56,7 @@ router.get('/user_out', (req, res) => {
   res.render("user_out",{obj : req.session.user});
 });
 
-// 커뮤니티 페이지 이동
-
-
+// 커뮤니티 페이지 이동, 페이징 포함
 router.get("/community/", (req, res) => {
   let page = req.query.page;
   let sql =
@@ -95,6 +99,8 @@ router.get("/community/", (req, res) => {
     }) 
   });
 });
+
+// 조회수 알고리즘을 위한 커뮤니티 페이지 이동
 router.get('/count', (req, res) => {
   let sql1 =`
   select post_views
@@ -112,15 +118,11 @@ router.get('/count', (req, res) => {
         post_views = ?
     WHERE post_seq = ?`
     conn.query(sql, [postView, post_num], (err, rows) => {
-    res.redirect("view?num="+String(post_num))
+      res.redirect("view?num="+String(post_num))
     })
   })
-  
-
-
-
-    
 });
+
 // 작성한 게시글 내용 페이지 이동
 router.get('/view', (req, res) => {
   let sql =
@@ -160,7 +162,15 @@ router.get('/edit', (req, res) => {
 
 // 투두리스트 사용자별 콘텐츠 내용
 router.get('/todolist_content',(req,res)=>{
-  res.render("todolist_content",{obj : req.session.user});
+  let goal_num = req.query.num 
+  console.log(goal_num);
+  let sql =
+    "select goal_seq, user_id, goal_title, goal_desc, date_format(created_at, '%Y-%m-%d %h:%i:%s') as created_at, complete_percent from goals where goal_seq = ?";
+  
+  conn.query(sql,[goal_num],(err,rows)=>{
+    rows[0].goal_desc = JSON.parse(rows[0].goal_desc);
+     res.render("todolist_content", { obj: req.session.user , todoList: rows});
+  })
 })
 
 //마이드림보드 리스트

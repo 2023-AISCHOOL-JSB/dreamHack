@@ -10,28 +10,26 @@
         <div class="board_view_wrap">
             <div class="board_view">
                 <div class="title">
-                    {{postContent[0].post_title}}
+                    {{todoList[0].goal_title}}
                 </div>
                 <div class="info">
                     <dl>
                         <dt>번호</dt>
-                        <dd>{{postContent[0].post_seq}}</dd>
+                        <dd>{{todoList[0].goal_seq}}</dd>
                     </dl>
                     <dl>
                         <dt>글쓴이</dt>
-                        <dd>{{postContent[0].user_id}}</dd>
+                        <dd>{{todoList[0].user_id}}</dd>
                     </dl>
                     <dl>
                         <dt>작성일</dt>
-                        <dd>{{postContent[0].posted_at}}</dd>
-                    </dl>
-                    <dl>
-                        <dt>조회</dt>
-                        <dd>{{postContent[0].post_views}}</dd>
+                        <dd>{{todoList[0].created_at}}</dd>
                     </dl>
                 </div>
                 <div class="cont">
-                    {{postContent[0].post_conent}}
+                    {% for i in todoList[0].goal_desc%}
+                    <div>{{i}}<input type="checkbox"></div>
+                    {% endfor%}
                 </div>
             </div>
             <div class="bt_wrap">
@@ -46,3 +44,5 @@
 
 {% endblock %}
 
+
+\
