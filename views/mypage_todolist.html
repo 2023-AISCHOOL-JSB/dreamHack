@@ -15,10 +15,11 @@
                         <div class="title"><p>제목</p></div>
                         <div class="count"><p>달성도</p></div>
                     </div>
+                    
                     {% for i in goals %}
                     <div>
                         <div class="num">
-                            <p>{{i.goal_seq}}</p>
+                            <p>{{loop.index}}</p>
                         </div>
                         <div class="title">
                             <a href="/todolist_content?num={{i.goal_seq}}">{{i.goal_title}}</a>
