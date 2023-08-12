@@ -30,6 +30,7 @@
                     {% for i in todoList[0].goal_desc%}
                     <div>{{i}}<input type="checkbox"></div>
                     {% endfor%}
+                    <progress value="{todoList[0].complete_percent}" max="100"></progress>
                 </div>
             </div>
             <div class="bt_wrap">
@@ -43,6 +44,3 @@
 </form>
 
 {% endblock %}
-
-
-\
