@@ -13,21 +13,28 @@
                     <div class="top">
                         <div class="num"><p>번호</p></div>
                         <div class="title"><p>제목</p></div>
-                        <div class="writer"><p>글쓴이</p></div>
                         <div class="count"><p>달성도</p></div>
                     </div>
+                    {% for i in goals %}
                     <div>
-
+                        <div class="num">
+                            <p>{{i.goal_seq}}</p>
+                        </div>
+                        <div class="title">
+                            <a href="/todolist_content?num={{i.goal_seq}}">{{i.goal_title}}</a>
+                        </div>
+                        <div class="count">
+                            <p>{{i.complete_percent}}</p>
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="board_page">
-                    <a href="#" class="bt first">
-                       <<
-                            <a href="#" class="bt prev">
-                               <
-                                    <a href="#" class="num on">1</a>
-                                    <a href="#" class="bt next">></a>
-                                    <a href="#" class="bt last">>></a>
+                    <a href="#" class="bt first"><<</a>
+                    <a href="#" class="bt prev"><</a>
+                    <a href="#" class="num on">1</a>
+                    <a href="#" class="bt next">></a>
+                    <a href="#" class="bt last">>></a>
                 </div>
                 <div class="bt_wrap">
                     <button onclick="location.href='todolist_write'" type="submit" class="submit_button">등록</button>
