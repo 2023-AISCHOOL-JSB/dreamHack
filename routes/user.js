@@ -101,4 +101,18 @@ router.post('/user_out',(req,res)=>{
         }
     })
 })
+
+// 닉 변경
+router.post('/mypage_manage',(req,res)=>{
+    let {user_name, user_pw,user_pw2} = req.body
+
+    let sql = "update users set user_name= ? where user_id = ? and user_pw= ?"
+
+    conn.query(sql,[user_name,req.session.user_id,user_pw],(err, rows)=>{
+        if (rows.affectedRows > 0) {
+            console.log('유저이름 변경 성공', rows)
+            res.send("<script>alert('변경 성공');location.href='http://localhost:3333'</script>")
+        } 
+    })
+})
 module.exports = router;
