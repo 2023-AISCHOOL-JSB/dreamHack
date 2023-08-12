@@ -115,4 +115,7 @@ router.post('/mypage_manage',(req,res)=>{
         } 
     })
 })
+
+
+
 module.exports = router;

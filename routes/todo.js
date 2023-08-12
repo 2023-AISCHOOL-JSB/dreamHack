@@ -17,6 +17,11 @@ router.post('/add',(req,res)=>{
         console.log("전송완료")
         res.send("<script>location.href='http://localhost:3333/mypage_todolist'</script>")
     })
+
+    
+    
 })
+
+
 
 module.exports = router;

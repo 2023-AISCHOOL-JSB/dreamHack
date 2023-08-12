@@ -39,3 +39,11 @@ but.addEventListener('click',function(){
     newTask.appendChild(buttonArea);
     inputContainer.appendChild(newTask);
 })
+
+let todo_myForm = document.getElementById("todo_form");
+todo_form.addEventListener("submit",function(e){
+    let title = document.getElementById("todo_title");
+    if(todo_title.value.length == 0){
+        alert("제목을 입력하세요")
+        e.preventDefault();
+    }})
