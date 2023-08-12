@@ -1,3 +1,21 @@
+/* 프로그레스 바 */
+progress{
+    position: absolute;
+    background:#f0f0f0;
+    border-radius:10px;
+    box-shadow: inset 3px 3px 10px #ccc;
+}
+
+
+#progress::-webkit-progress-value {
+    position: absolute;
+    border-radius:10px;
+    background: #1D976C;
+    background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);
+    background: linear-gradient(to right, #93F9B9, #1D976C);
+
+}
+
 .todolist_form {
     text-align: center;
     width: 100%;
@@ -47,6 +65,7 @@
     border-radius: 20px;
     /* border-left : 3px solid black; */
     /* border:2px solid skyblue ; */
+    font-family: "KotraBold";
 }
 
 .submit {

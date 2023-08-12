@@ -132,8 +132,8 @@ a {
 }
 
 .board_list .title {
-    width: 60%;
-    text-align: left;
+    width: 50%;
+    text-align: center;
 }
 
 .board_list .top .title {
@@ -149,6 +149,7 @@ a {
 }
 
 .board_list .count {
+    position: relative;
     width: 10%;
 }
 
