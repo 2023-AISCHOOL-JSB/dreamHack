@@ -15,7 +15,7 @@
                 <div class="info">
                     <dl>
                         <dt>번호</dt>
-                        <dd>{{todoList[0].goal_seq}}</dd>
+                        <dd>{{index}}</dd>
                     </dl>
                     <dl>
                         <dt>글쓴이</dt>
@@ -26,6 +26,7 @@
                         <dd>{{todoList[0].created_at}}</dd>
                     </dl>
                 </div>
+                <form action="" method=""></form>
                 <div class="cont">
                     {% for i in todoList[0].goal_desc%}
                     <div>{{i}}<input type="checkbox"></div>
@@ -35,9 +36,6 @@
             </div>
             <div class="bt_wrap">
                 <a href="mypage_todolist" class="on">목록</a>
-                {% if postContent[0].user_id == obj.user_id %}
-                <a href="edit" class="on">수정</a>
-                {% endif %}
             </div>
         </div>
     </div>
