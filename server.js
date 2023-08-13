@@ -9,6 +9,7 @@ const indexRouter = require("./routes");
 const userRouter = require("./routes/user");
 const postsRouter = require("./routes/posts");
 const todoRouter = require("./routes/todo");
+const visionRouter = require("./routes/dreamboard");
 const cors = require("cors");
 
 /* CORS 오류 발생! 
@@ -17,7 +18,7 @@ const cors = require("cors");
 3) 미들웨어 등록
 */
 
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.use(cors());
 
 // 1. 포트 번호 설정
@@ -31,10 +32,11 @@ nunjucks.configure("views", {
 });
 
 // 3. post 방식으로 데이터를 넘겨줄 때 필요함
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 // 4. 정적인 파일들 public에 접근
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/vendor"));
 
 // 5. 세션 저장소 관리
 app.use(
@@ -51,6 +53,7 @@ app.use("/", indexRouter);
 app.use("/user", userRouter);
 app.use("/posts", postsRouter);
 app.use("/todo",todoRouter);
+app.use("/dreamboard", visionRouter);
 
 
 app.listen(app.get("port"), () => {

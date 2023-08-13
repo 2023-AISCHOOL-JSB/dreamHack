@@ -10,7 +10,8 @@ router.get('/',(req,res)=>{
 
 // 드림보드 페이지 이동 (http://localhost:3333/dreamboard) 이동했을떄
 router.get('/dreamboard',(req,res)=>{
-  res.render("dreamboard",{obj : req.session.user}); //views 파일 안의 dreamboard.html 나타내줌
+  res.render("index") // views폴더에서 inndex.html 렌더
+  // res.render("dreamboard",{obj : req.session.user}); //views 파일 안의 dreamboard.html 나타내줌
 })
 
 // 로그인 페이지 이동 (http://localhost:3333/login) 이동했을떄
@@ -186,6 +187,8 @@ router.get('/dreamboard_list',(req,res)=>{
 router.get('/mydreamboard_content',(req,res)=>{
   res.render("mydreamboard_content",{obj : req.session.user});
 })
+
+
 
 
 module.exports = router;
