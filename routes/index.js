@@ -157,7 +157,13 @@ router.get('/write', (req, res) => {
 
 //게시글 수정 페이지 이동
 router.get('/edit', (req, res) => {
-  res.render("edit",{obj : req.session.user});
+
+  let sql = "select * from posts where post_seq = ?"
+
+  conn.query(sql,[req.query.num],(err,rows)=>{
+    res.render("edit", { obj: req.session.user, postInfo: rows });
+  })
+
 });
 
 // 투두리스트 사용자별 콘텐츠 내용

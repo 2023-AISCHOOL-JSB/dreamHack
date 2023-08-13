@@ -28,5 +28,22 @@ router.post('/write',(req,res)=>{
   })
 })
 
+router.post('/edit',(req,res)=>{
+  console.log(req.body);
+  let {post_title, post_conent, post_seq} = req.body
+
+  let sql =
+    "update posts set post_title = ?, post_conent = ? where post_seq = ?"
+  
+  conn.query(sql,[post_title,post_conent,post_seq],(err,rows)=>{
+    if(rows.affectedRows > 0){
+      res.send(
+        `'<script>location.href="http://localhost:3333/view?num=${post_seq}"</script>'`
+      );
+    }
+    
+  })
+
+})
 
 module.exports = router;
