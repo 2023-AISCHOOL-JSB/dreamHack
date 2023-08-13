@@ -32,9 +32,9 @@ router.get('/mypage_manage',(req,res)=>{
 // 마이페이지 투두리스트 페이지이동
 router.get('/mypage_todolist',(req,res)=>{
 
-  let sql = "select goal_seq, goal_title, complete_percent from goals"
+  let sql = "select goal_seq, goal_title, complete_percent from goals where user_id = ?"
 
-  conn.query(sql,(err, rows)=>{
+  conn.query(sql,[req.session.user.user_id],(err, rows)=>{
     res.render("mypage_todolist", { obj: req.session.user , goals : rows});
   })
 
@@ -164,10 +164,9 @@ router.get('/edit', (req, res) => {
 // 투두리스트 사용자별 콘텐츠 내용
 router.get('/todolist_content',(req,res)=>{
   let goal_num = req.query.num 
-  console.log(goal_num);
   let sql =
-    "select goal_seq, user_id, goal_title, goal_desc, date_format(created_at, '%Y-%m-%d %h:%i:%s') as created_at, complete_percent from goals where goal_seq = ? and user_id = ?";
-  conn.query(sql,[goal_num,req.session.user.user_id],(err,rows)=>{
+    "select goal_seq, user_id, goal_title, goal_desc, date_format(created_at, '%Y-%m-%d %h:%i:%s') as created_at, complete_percent from goals where goal_seq = ?";
+  conn.query(sql,[goal_num],(err,rows)=>{
     rows[0].goal_desc = JSON.parse(rows[0].goal_desc);
      res.render("todolist_content", { obj: req.session.user , todoList: rows});
   })
