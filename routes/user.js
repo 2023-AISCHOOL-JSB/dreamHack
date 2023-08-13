@@ -104,18 +104,39 @@ router.post('/user_out',(req,res)=>{
 
 // 닉 변경
 router.post('/mypage_manage',(req,res)=>{
-    let {user_name, user_pw,user_pw2} = req.body
+    let user_name = req.body.user_name
 
-    let sql = "update users set user_name= ? where user_id = ? and user_pw= ?"
+    let sql = "update users set user_name= ? where user_id = ?"
 
-    conn.query(sql,[user_name,req.session.user_id,user_pw],(err, rows)=>{
+    conn.query(sql,[user_name,req.session.user_id],(err, rows)=>{
+        console.log(user_name)
         if (rows.affectedRows > 0) {
             console.log('유저이름 변경 성공', rows)
             res.send("<script>alert('변경 성공');location.href='http://localhost:3333'</script>")
+            console.log(req.session.user_name)
         } 
     })
 })
 
+
+// 본인확인 기능 라우터
+router.post('/account_check', (req, res) => {
+    let { user_id, user_pw } = req.body;
+
+    let sql = "select * from users where user_id=? and user_pw=?"
+
+    conn.query(sql, [user_id, user_pw], (err, rows) => {
+        if (rows.length > 0) {
+            console.log('본인인증 성공!', rows)
+            res.send("<script>alert('확인 되었습니다!');location.href='http://localhost:3333/mypage_manage'</script>")
+
+        } else {
+            console.log('본인인증 실패!')
+            res.send('<script>alert("아이디와 비밀번호를 확인하십시요");location.href="http://localhost:3333/account_check"</script>')
+        }
+    })
+
+})
 
 
 module.exports = router;
