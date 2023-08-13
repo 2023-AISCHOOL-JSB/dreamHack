@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>🦛DREAM HACK</title>
+  <link href="./images/hippo.ico" rel="shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/vision_style.css">
+  <!-- JQuery 라이브러리 로드, 자바스크립트 작업을 간소화하기 위한 라이브러리 -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+    /* JQuery 확장 기능, HTML 요소의 외부(부모) HTML을 가져오는 함수를 추가로 정의 */
+    jQuery.fn.outerHTML = function () {
+      return jQuery('<div />').append(this.eq(0).clone()).html();
+    };
+    /* Number 객체의 프로토타입에 `countDecimals`함수를 추가로 정의, 숫자의 소수점 자릿수 계산 */
+    Number.prototype.countDecimals = function () {
+      if (Math.floor(this.valueOf()) === this.valueOf()) return 0;
+      return this.toString().split(".")[1].length || 0;
+    }
+  </script>
+  <!-- fabric.js : 캔버스 기반 이미지 편집을 위한 라이브러리 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.3/fabric.min.js"></script>
+  <!-- fabric.js : 컬러 선택을 위한 컬러 피커 라이브러리 -->
+  <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2/dist/spectrum.min.css">
+  <!-- fabric.js : 그라디언트 선택을 위한 라이브러리 -->
+  <script src="grapick.min.js"></script>
+  <link rel="stylesheet" href="grapick.min.css">
+  <!-- fabric.js : 취소 및 복원 기능을 지원하는 스택 라이브러리 -->
+  <script src="undo-redo-stack.js"></script>
+
+
+  <script src="assets/js/lib/core.js"></script>
+  <script src="assets/js/lib/toolbar.js"></script>
+  <script src="assets/js/lib/canvas.js"></script>
+  <script src="assets/js/lib/shapes.js"></script>
+
+  <script src="assets/js/lib/freeDrawSettings.js"></script>
+  <script src="assets/js/lib/canvasSettings.js"></script>
+  <script src="assets/js/lib/selectionSettings.js"></script>
+
+  <script src="assets/js/lib/drawingLine.js"></script>
+  <script src="assets/js/lib/drawingPath.js"></script>
+  <script src="assets/js/lib/drawingText.js"></script>
+  <script src="assets/js/lib/tip.js"></script>
+  <script src="assets/js/lib/upload.js"></script>
+  <script src="assets/js/lib/copyPaste.js"></script>
+
+  <script src="assets/js/lib/utils.js"></script>
+  <script src="assets/js/lib/zoom.js"></script>
+  <script src="assets/js/lib/saveInBrowser.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+</head>
+
+<body>
+  <!-- 이미지 편집기의 뷰포트를 나타내는 div 요소 생성, 이 요소에 이미지 편집기 나타날 것 -->
+  <div id="image-editor-container"></div>
+
+</body>
+
+
+<!-- 이미지 편집기 초기화하고 동작시키는 자바스크립트 코드 포함되어 있을 것 -->
+<script src="assets/js/script.js"></script>
+
+</html>
