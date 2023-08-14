@@ -188,6 +188,10 @@ router.get('/mydreamboard_content',(req,res)=>{
   res.render("mydreamboard_content",{obj : req.session.user});
 })
 
+// 마이페이지 계정확인 페이지 이동
+router.get('/account_check',(req,res)=>{
+  res.render("account_check",{obj : req.session.user});
+})
 
 
 
