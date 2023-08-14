@@ -2,7 +2,7 @@
 
 {% block content%}
 
-<form id="form_view" action="">
+<form id="form_view" action="/todo/check" method="post" >
     <div class="board_wrap">
         <div class="board_title">
             <strong>Todo List</strong>
@@ -26,16 +26,18 @@
                         <dd>{{todoList[0].created_at}}</dd>
                     </dl>
                 </div>
-                <form action="" method=""></form>
                 <div class="cont">
                     {% for i in todoList[0].goal_desc%}
-                    <div>{{i}}<input type="checkbox"></div>
+                    <div>{{i}}<input type="checkbox" name="checked"></div>
                     {% endfor%}
                     <progress value="{todoList[0].complete_percent}" max="100"></progress>
+                    <br>
+                    <br>
                 </div>
             </div>
             <div class="bt_wrap">
                 <a href="mypage_todolist" class="on">목록</a>
+                <input type="submit" class="on" value="확인">
             </div>
         </div>
     </div>
