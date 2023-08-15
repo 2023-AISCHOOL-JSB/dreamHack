@@ -45,6 +45,7 @@ app.use(
     resave: false,
     secret: "secret",
     store: new fileStore(),
+    saveUninitialized: false,
   })
 );
 
