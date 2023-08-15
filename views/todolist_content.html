@@ -28,22 +28,22 @@
                 </div>
                 <div class="cont">
                     {% for i in todoList[0].goal_desc%}
-                    <div>{{i}}<input type="checkbox" name="checked"></div>
+                    <div id="todolist_line">{{i}}<input type="checkbox" name="checked" id="check_real"></div>
                     {% endfor%}
                     
-                    <progress value="{{todoList[0].complete_percent}}" max="100"></progress>
+                    <progress value="{{todoList[0].complete_percent}}" max="100" id="check_progress"></progress>
                     &nbsp;
-                    <div>{{todoList[0].complete_percent.toFixed(1)}}%</div>
+                    <div id="check_percentage">{{todoList[0].complete_percent.toFixed(1)}}%</div>
                     <br>
                 </div>
             </div>
             <div class="bt_wrap">
-                <a href="mypage_todolist" class="on">목록</a>
+                <button onclick="location.href='mypage_todolist'" type="button" class="submit_button">목록</button>
                 <input type="hidden" name="goal_seq" value="{{todoList[0].goal_seq}}">
                 <input type="hidden" name="list_len" value="{{todoList[0].goal_desc.length}}">
                 <input type="hidden" name="due_date" value="{{todoList[0].due_date}}">
                 <input type="hidden" name="complete_percent" value="{{todoList[0].complete_percent}}">
-                <input type="submit" class="on" value="확인">
+                <input type="submit" class="submit" value="확인">
             </div>
         </div>
     </div>
