@@ -21,6 +21,16 @@ router.post('/add',(req,res)=>{
 
 router.post('/check',(req,res)=>{
     console.log(req.body);
+
+    let checked = req.body.checked;
+    if (!Array.isArray(checked)){
+        checked = [req.body.checked]   
+    }
+
+    console.log(checked.length);
+
+    let sql = "update goals set complete_percent =? where goal_seq = ?" 
+
 })
 
 

@@ -171,10 +171,10 @@ router.get('/edit', (req, res) => {
 router.get('/todolist_content',(req,res)=>{
   let goal_num = req.query.num 
   let sql =
-    "select goal_seq, user_id, goal_title, goal_desc, date_format(created_at, '%Y-%m-%d %h:%i:%s') as created_at, complete_percent from goals where goal_seq = ?";
+    "select goal_seq, user_id, goal_title, goal_desc, datediff(end_at, start_at) as due_date, date_format(created_at, '%Y-%m-%d %h:%i:%s') as created_at, complete_percent from goals where goal_seq = ?";
   conn.query(sql,[goal_num],(err,rows)=>{
     rows[0].goal_desc = JSON.parse(rows[0].goal_desc);
-     res.render("todolist_content", { obj: req.session.user , todoList: rows , index : req.query.index});
+    res.render("todolist_content", { obj: req.session.user , todoList: rows , index : req.query.index});
   })
 })
 

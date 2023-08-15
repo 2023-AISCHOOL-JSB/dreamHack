@@ -427,6 +427,9 @@ dreamBoardText.style.fontFamily = "'Moirai One', cursive";
 
             } else if (id === 'undo') _self.undo();
             else if (id === 'redo') _self.redo();
+            else if (id === 'mypage') {
+              window.location.href = "http://localhost:3333/dreamboard_list"; // 여기에 원하는 홈페이지 URL을 입력하세요. http://localhost:3333/
+            }
           });
         });
       })();

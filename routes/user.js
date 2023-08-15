@@ -57,23 +57,6 @@ router.get('/logout', (req, res) => {
     res.send("<script>location.href='http://localhost:3333'</script>")
 })
 
-// 마이페이지 기능 라우터
-router.get('/mypage_manage',(req,res)=>{
-    console.log('회원정보수정',req.body)
-
-    // 1. 내가 받아온 새 이름과 새 주소를 name, add 라는 변수에 넣을 것
-    let {name, address} = req.body;
-
-    // 2. id값? session 에서 가져오기
-    let id = req.session.user.user_id;
-
-    // 3. DB 연동
-    let sql = `update users set user_id = ? `
-
-    //  3-2) update set 을 이용해서 DB값 변경
-   
-})
-
 // 회원 탈퇴 기능 라우터
 router.post('/user_out',(req,res)=>{
     let {user_id, user_pw} = req.body
@@ -105,11 +88,12 @@ router.post('/user_out',(req,res)=>{
 // 닉 변경
 router.post('/mypage_manage',(req,res)=>{
     let user_name = req.body.user_name
-
+    let user_id = req.session.user.user_id
     let sql = "update users set user_name= ? where user_id = ?"
 
-    conn.query(sql,[user_name,req.session.user_id],(err, rows)=>{
+    conn.query(sql,[user_name, user_id],(err, rows)=>{
         console.log(user_name)
+        console.log(user_id);
         if (rows.affectedRows > 0) {
             console.log('유저이름 변경 성공', rows)
             res.send("<script>alert('변경 성공');location.href='http://localhost:3333'</script>")
@@ -124,17 +108,27 @@ router.post('/account_check', (req, res) => {
     let { user_id, user_pw } = req.body;
 
     let sql = "select * from users where user_id=? and user_pw=?"
-
-    conn.query(sql, [user_id, user_pw], (err, rows) => {
-        if (rows.length > 0) {
-            console.log('본인인증 성공!', rows)
-            res.send("<script>alert('확인 되었습니다!');location.href='http://localhost:3333/mypage_manage'</script>")
-
-        } else {
-            console.log('본인인증 실패!')
-            res.send('<script>alert("아이디와 비밀번호를 확인하십시요");location.href="http://localhost:3333/account_check"</script>')
-        }
-    })
+    if(user_id == req.session.user.user_id){
+         conn.query(sql, [user_id, user_pw], (err, rows) => {
+           if (rows.length > 0) {
+             console.log("본인인증 성공!", rows);
+             res.send(
+               "<script>alert('확인 되었습니다!');location.href='http://localhost:3333/mypage_manage'</script>"
+             );
+           } else {
+             console.log("본인인증 실패!");
+             res.send(
+               '<script>alert("아이디와 비밀번호를 확인하십시요");location.href="http://localhost:3333/account_check"</script>'
+             );
+           }
+         });
+    } else{
+        console.log("본인인증 실패!");
+        res.send(
+          '<script>alert("아이디가 일치하지 않습니다");location.href="http://localhost:3333/account_check"</script>'
+        );
+    }
+   
 
 })
 
