@@ -121,6 +121,7 @@ a {
     padding: 15px 0;
     text-align: center;
     font-size: 15px;
+    /* 치외법권, 폰트 사이즈 건들지 말것 */
 }
 
 .board_list > div.top > div {
@@ -336,4 +337,15 @@ a {
     justify-content: center;
     align-items: center;
     margin-top: 4%;
+}
+
+#my_community_top{
+    border-bottom: 1px solid #999;
+    font-family: 'KotraBold';
+    display: flex;
+    justify-content: space-around;
+    font-size: 17px;
+}
+#my_com_p{
+    font-size: 17px;
 }

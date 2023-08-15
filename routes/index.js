@@ -193,6 +193,10 @@ router.get('/account_check',(req,res)=>{
   res.render("account_check",{obj : req.session.user});
 })
 
-
+// 내가 쓴 게시글 페이지 이동 (http://localhost:3333/dreamboard) 이동했을떄
+router.get('/my_Community',(req,res)=>{
+  res.render("my_Community",{obj : req.session.user}) // views폴더에서 inndex.html 렌더
+  // res.render("dreamboard",{obj : req.session.user}); //views 파일 안의 dreamboard.html 나타내줌
+})
 
 module.exports = router;
