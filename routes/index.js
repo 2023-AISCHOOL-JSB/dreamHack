@@ -195,8 +195,17 @@ router.get('/account_check',(req,res)=>{
 
 // 내가 쓴 게시글 페이지 이동 (http://localhost:3333/dreamboard) 이동했을떄
 router.get('/my_Community',(req,res)=>{
-  res.render("my_Community",{obj : req.session.user}) // views폴더에서 inndex.html 렌더
-  // res.render("dreamboard",{obj : req.session.user}); //views 파일 안의 dreamboard.html 나타내줌
+
+  let sql =
+    "select post_seq, post_title, post_conent, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts where user_id = ? order by post_seq desc"
+    
+  conn.query(sql,[req.session.user.user_id],(err,rows)=>{
+
+    res.render("my_Community", { obj: req.session.user , list : rows});
+  })
+
+
+
 })
 
 module.exports = router;
