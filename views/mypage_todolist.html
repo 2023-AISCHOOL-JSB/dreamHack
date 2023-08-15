@@ -24,9 +24,9 @@
                         <div class="title">
                             <a href="/todolist_content?&num={{i.goal_seq}}&index={{loop.index}}">{{i.goal_title}}</a>
                         </div>
-                        <div class="count">
-                            <progress value="{{i.complete_percent}}" max="100"></progress>&nbsp;
-                            <div>{{i.complete_percent.toFixed(1)}}%</div>
+                        <div class="progress_bar">
+                            <div id="progress_real_div"><progress id="progress_real" value="{{i.complete_percent}}" max="100"></progress>&nbsp;</div> 
+                            <div id="progress_percentage">{{i.complete_percent.toFixed(1)}}%</div>
                         </div>
                     </div>
                     {% endfor %}

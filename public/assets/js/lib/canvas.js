@@ -38,7 +38,10 @@
 
       fabricCanvas.on('object:modified', () => {
         console.log('trigger: modified')
+
+        // 현재 캔버스의 상태를 JSON 형식으로 직렬화
         let currentState = this.canvas.toJSON();
+        console.log(currentState)
         this.history.push(JSON.stringify(currentState));
       })
 
