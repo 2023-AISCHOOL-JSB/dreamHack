@@ -1,5 +1,3 @@
-
-
 {% extends 'layout.html'%}
 
 {% block content%}
@@ -7,7 +5,7 @@
 <form id="form_view" action="">
     <div class="board_wrap">
         <div class="board_title">
-            <strong>커뮤니티 게시판</strong>
+            <strong>마이 드림보드</strong>
         </div>
         <div class="board_view_wrap">
             <div class="board_view">
@@ -37,9 +35,9 @@
                 </div>
             </div>
             <div class="bt_wrap">
-                <a href="community" class="on">목록</a>
+                <a href="mypage_todolist" class="on">목록</a>
                 {% if postContent[0].user_id == obj.user_id %}
-                <a href="edit?num={{postContent[0].post_seq}}" class="on">수정</a>
+                <a href="edit" class="on">수정</a>
                 {% endif %}
             </div>
         </div>

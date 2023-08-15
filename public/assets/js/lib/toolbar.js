@@ -263,7 +263,7 @@ Initialize toolbar
 
       // 툴바의 home 버튼을 클릭할 때 설정한 홈페이지 URL로 이동
       $(`${_self.containerSelector} #toolbar button#home`).click(function () {
-        window.location.href = "#"; // 여기에 원하는 홈페이지 URL을 입력하세요. http://localhost:3333/
+        window.location.href = "http://localhost:3333"; // 여기에 원하는 홈페이지 URL을 입력하세요. http://localhost:3333/
       });
 
      // 이벤트 리스너 등록
@@ -427,6 +427,9 @@ dreamBoardText.style.fontFamily = "'Moirai One', cursive";
 
             } else if (id === 'undo') _self.undo();
             else if (id === 'redo') _self.redo();
+            else if (id === 'mypage') {
+              window.location.href = "http://localhost:3333/dreamboard_list"; // 여기에 원하는 홈페이지 URL을 입력하세요. http://localhost:3333/
+            }
           });
         });
       })();

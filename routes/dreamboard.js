@@ -4,11 +4,13 @@ const conn = require('../config/database')
 const zlib = require('zlib');
 const { Storage } = require('@google-cloud/storage');
 const timestamp = Date.now();
+const path = require('path');
 
 // 구성 설정 및 클라이언트 초기화
 const storage = new Storage({
   projectId: "sustained-digit-395815",
-  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
+  // keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS
+  keyFilename: path.join(__dirname, '../key/sustained-digit-395815-3e50c89cdde8.json')
 });
 
 // Google Cloud Storage(GCS)에 데이터를 업로드하는 함수

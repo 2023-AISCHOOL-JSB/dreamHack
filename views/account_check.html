@@ -1,0 +1,27 @@
+{% extends 'layout.html'%}
+
+{% block content%}
+<div class="todolist_form">
+    <div class="myPage__ToDoList">
+        {% include 'category.html'%}
+        <div class="todolist_board_wrap">
+            <form action="/user/account_check" method="post">
+                <div id="manage__box">
+                    <h2 class="manage_h1">본인확인</h2>
+                    <div class="int__area">
+                        <input type="text" name="user_id" id="account_id" autocomplete="off" placeholder="아이디">
+                    </div>
+                    <div class="int__area">
+                        <input type="password" name="user_pw" id="pw" autocomplete="off"placeholder="비밀번호" >
+                    </div>
+                    <div class="btn__area">
+                        <input type="submit" class="submit_button" id="btn" value="확인">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock%}

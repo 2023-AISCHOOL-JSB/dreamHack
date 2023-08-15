@@ -22,10 +22,11 @@
                             <p>{{loop.index}}</p>
                         </div>
                         <div class="title">
-                            <a href="/todolist_content?num={{i.goal_seq}}">{{i.goal_title}}</a>
+                            <a href="/todolist_content?&num={{i.goal_seq}}&index={{loop.index}}">{{i.goal_title}}</a>
                         </div>
                         <div class="count">
-                            <progress value="{{i.complete_percent}}" max="100"></progress>
+                            <progress value="{{i.complete_percent}}" max="100"></progress>&nbsp;
+                            <div>{{i.complete_percent.toFixed(1)}}%</div>
                         </div>
                     </div>
                     {% endfor %}

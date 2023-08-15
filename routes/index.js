@@ -158,17 +158,23 @@ router.get('/write', (req, res) => {
 
 //게시글 수정 페이지 이동
 router.get('/edit', (req, res) => {
-  res.render("edit",{obj : req.session.user});
+
+  let sql = "select * from posts where post_seq = ?"
+
+  conn.query(sql,[req.query.num],(err,rows)=>{
+    res.render("edit", { obj: req.session.user, postInfo: rows });
+  })
+
 });
 
 // 투두리스트 사용자별 콘텐츠 내용
 router.get('/todolist_content',(req,res)=>{
   let goal_num = req.query.num 
   let sql =
-    "select goal_seq, user_id, goal_title, goal_desc, date_format(created_at, '%Y-%m-%d %h:%i:%s') as created_at, complete_percent from goals where goal_seq = ?";
+    "select goal_seq, user_id, goal_title, goal_desc, datediff(end_at, start_at) as due_date, date_format(created_at, '%Y-%m-%d %h:%i:%s') as created_at, complete_percent from goals where goal_seq = ?";
   conn.query(sql,[goal_num],(err,rows)=>{
     rows[0].goal_desc = JSON.parse(rows[0].goal_desc);
-     res.render("todolist_content", { obj: req.session.user , todoList: rows});
+    res.render("todolist_content", { obj: req.session.user , todoList: rows , index : req.query.index});
   })
 })
 
@@ -182,7 +188,15 @@ router.get('/mydreamboard_content',(req,res)=>{
   res.render("mydreamboard_content",{obj : req.session.user});
 })
 
+// 마이페이지 계정확인 페이지 이동
+router.get('/account_check',(req,res)=>{
+  res.render("account_check",{obj : req.session.user});
+})
 
-
+// 내가 쓴 게시글 페이지 이동 (http://localhost:3333/dreamboard) 이동했을떄
+router.get('/my_Community',(req,res)=>{
+  res.render("my_Community",{obj : req.session.user}) // views폴더에서 inndex.html 렌더
+  // res.render("dreamboard",{obj : req.session.user}); //views 파일 안의 dreamboard.html 나타내줌
+})
 
 module.exports = router;
