@@ -1,3 +1,17 @@
+/* 폰트 */
+
+@font-face {
+  font-family: 'KotraBold';
+  font-weight: normal;
+  font-style: normal;
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kotra/KotraBold.eot');
+  src: url('https://cdn.jsdelivr.net/gh/webfontworld/kotra/KotraBold.eot?#iefix') format('embedded-opentype'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kotra/KotraBold.woff2') format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kotra/KotraBold.woff') format('woff'),
+      url('https://cdn.jsdelivr.net/gh/webfontworld/kotra/KotraBold.ttf') format("truetype");
+  font-display: swap;
+}
+
 /* 웹 페이지의 전체 바디 요소에 적용되는 스타일 정의 */
 body {
   margin: 0; /* 페이지 바깥 여백 없애고 페이지 꽉 채움 */
@@ -14,6 +28,7 @@ body {
   width: 100%;
   height: 100%;
   /* display: flex; 주석해제시 Flexbox 레이아웃으로 동작하게 됨 */
+  font-family: 'KotraBold';
 }
 
 /* CSS for tooltip */
@@ -43,6 +58,7 @@ body {
   display: flex; /* 툴바 내부 요소들 Flexbox 레이아웃으로 배치 */
   justify-content: space-between; /* 툴바 내부 요소들을 좌우로 최대한 분리하여 정렬 */
   align-items: center; /* 툴바 내부 요소들을 수직 방향으로 가운데 정렬 */
+  
 }
 
 .toolbar button {

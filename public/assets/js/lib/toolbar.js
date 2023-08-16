@@ -305,12 +305,12 @@ preconnectLink2.setAttribute("crossorigin", "");
 document.head.appendChild(preconnectLink2);
 
 const fontLink = document.createElement("link");
-fontLink.href = "https://fonts.googleapis.com/css2?family=Moirai+One&display=swap";
+fontLink.href = "https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap";
 fontLink.rel = "stylesheet";
 document.head.appendChild(fontLink);
 
 // 폰트 적용
-dreamBoardText.style.fontFamily = "'Moirai One', cursive";
+dreamBoardText.style.fontFamily = "'Black Han Sans', sans-serif";
 
   // mainButtons와 expandButtons 사이에 "Dream Board" 글자 삽입
   toolbar.insertBefore(dreamBoardText, expandButtons);
