@@ -17,11 +17,11 @@
                         <div class="count">조회</div>
                     </div>
                     {% for i in list %}
-                    <div>
-                        <div class="num">{{i.post_seq}}</div>
-                        <div class="title"><a href="count?num={{i.post_seq}}">{{i.post_title}}</a></div>
-                        <div class="date">{{i.posted_at}}</div>
-                        <div class="count">{{i.post_views}}</div>
+                    <div id="community_content">
+                        <div id="my_community_num">{{i.post_seq}}</div>
+                        <div id="my_community_title"><a href="count?num={{i.post_seq}}">{{i.post_title}}</a></div>
+                        <div class="my_community_date">{{i.posted_at}}</div>
+                        <div id="my_community_count">{{i.post_views}}</div>
                     </div>
                     {% endfor %}
                 </div>

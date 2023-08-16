@@ -151,7 +151,7 @@ a {
 }
 
 .board_list .date {
-    width: 10%;
+    width: 20%;
 }
 
 .board_list .count {
@@ -385,5 +385,33 @@ a {
 }
 #check_percentage{
     display: flex;
+    justify-content: center;
+}
+#community_content{
+    border-bottom: 1px solid #999;
+    font-family: 'KotraBold';
+    display: flex;
+    justify-content: space-around;
+    font-size: 15px;
+}
+#my_community_num{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.my_community_date{
+    width: 20%;
+}
+#my_community_title{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#my_community_count{
+    width: 10%;
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
