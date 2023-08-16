@@ -30,7 +30,6 @@
                     {% for i in todoList[0].goal_desc%}
                     <div id="todolist_line">{{i}}<input type="checkbox" name="checked" id="check_real"></div>
                     {% endfor%}
-                    
                     <progress value="{{todoList[0].complete_percent}}" max="100" id="check_progress"></progress>
                     &nbsp;
                     <div id="check_percentage">{{todoList[0].complete_percent.toFixed(1)}}%</div>
@@ -43,10 +42,10 @@
                 <input type="hidden" name="list_len" value="{{todoList[0].goal_desc.length}}">
                 <input type="hidden" name="due_date" value="{{todoList[0].due_date}}">
                 <input type="hidden" name="complete_percent" value="{{todoList[0].complete_percent}}">
-                <input type="submit" class="submit" value="확인">
+                <input type="submit" class="submit" value="확인" disabled>
             </div>
         </div>
     </div>
 </form>
-
+<script src="assets/js/todolistwrite.js"></script>
 {% endblock %}
