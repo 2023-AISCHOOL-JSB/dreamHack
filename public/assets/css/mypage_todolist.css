@@ -257,6 +257,11 @@ body {
     margin-left: 10px;
 }
 
+.date_end{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
 /* .cancel{
     width: 120px;
     background-color: black;
