@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const conn = require('../config/database')
+const conn = require('../config/database');
 const zlib = require('zlib');
 const { Storage } = require('@google-cloud/storage');
 const timestamp = Date.now();
@@ -63,12 +63,22 @@ router.post("/add", async function(req, res){
     console.log("URL의 데이터 타입", typeof(fileUrl),"으로 DB에 저장")
     // GCS에 업로드한 파일의 공개된 URL을 유저ID와 함께 DB에 저장
     let sql = `INSERT INTO vision_boards (user_id, vision_title, vision_desc, created_at) VALUES ('${req.session.user.user_id}', 'vision_title 1', ?, NOW());`
-    conn.query(sql, [fileUrl], (err, rows)=>{
+    let sql2 = `UPDATE vision_boards SET vision_desc = ?, created_at = NOW() WHERE user_id = '${req.session.user.user_id}'`
+    conn.query(sql2, [fileUrl], (err, rows)=>{
       if(err){
         res.status(500).send('데이터베이스에 저장하는 동안 오류가 발생하였습니다.');
         return;
       }
-      console.log('데이터베이스에 URL 저장완료') // 중간 로그
+      console.log('데이터베이스에 URL 수정 완료') // 중간 로그
+      if (rows.affectedRows == 0) {
+        conn.query(sql, [fileUrl], (err, rows)=>{
+          if(err){
+            res.status(500).send('데이터베이스에 저장하는 동안 오류가 발생하였습니다.');
+            return;
+          }
+          console.log('데이터베이스에 URL 추가 완료') // 중간 로그
+        })
+      }
     })
   } catch (err) {
     res.status(500).send('GCS에 업로드하거나 DB에 저장하는 중 오류 발생: ' + err.message);
