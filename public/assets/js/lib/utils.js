@@ -183,15 +183,12 @@ const alignObject = (canvas, activeSelection, pos) => {
 
       break
 
-    case '수평가운데':
+    case '가운데':
 
       (async () => {
         let bound = activeSelection.getBoundingRect()
         let realBound = await getRealBBox(activeSelection)
-        activeSelection.set(
-          'left',
-          (activeSelection.left - bound.left - realBound.x1) + (canvas.width / 2) - (realBound.width / 2)
-        )
+        activeSelection.set('left', (activeSelection.left - bound.left - realBound.x1) + canvas.width - realBound.width)
         activeSelection.setCoords()
         canvas.renderAll()
         canvas.trigger('object:modified')
