@@ -421,7 +421,7 @@ const downloadImage = (data, extension = 'png', mimeType = 'image/png') => {
   }, 60);
 }
 
-
+// SVGmarkup == svg문자열로 변환한 캔버스 데이터, 인자로 받음
 const downloadSVG = (SVGmarkup) => {
   const url = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(SVGmarkup);
 
