@@ -417,10 +417,10 @@ dreamBoardText.style.fontFamily = "'Moirai One', cursive";
               $(".custom-modal-container").click(function () {
                 $(this).remove();
               });
-
+              // utils.js에 downloadSVG 등 관련 함수 존재
               $(".custom-modal-container .button-download").click(function (e) {
                 let type = $(this).attr('id');
-                if (type === 'svg') downloadSVG(_self.canvas.toSVG());
+                if (type === 'svg') downloadSVG(_self.canvas.toSVG()); 
                 else if (type === 'png') downloadImage(_self.canvas.toDataURL());
                 else if (type === 'jpg') downloadImage(_self.canvas.toDataURL({ format: 'jpeg' }), 'jpg', 'image/jpeg');
               });
