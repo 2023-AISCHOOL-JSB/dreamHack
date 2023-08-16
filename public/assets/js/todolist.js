@@ -8,11 +8,12 @@
 
 let input = document.getElementById("task-input")
 // input 텍스트 이름 선언
-let divi  = document.getElementById("task-board")
-let but   = document.getElementById("add-button")
+let divi = document.getElementById("task-board")
+let but = document.getElementById("add-button")
 // 추가 버튼 기능 but으로 선언
 let todolist = 0
-but.addEventListener('click',function(){
+// 시작 날짜, 마감날짜를 선언
+but.addEventListener('click', function () {
     const inputContainer = divi
     const newTask = document.createElement("div");
     newTask.className = "task";
@@ -29,9 +30,9 @@ but.addEventListener('click',function(){
     deleteButton.textContent = "삭제";
 
     deleteButton.addEventListener("click", () => {
-      inputContainer.removeChild(newTask);
-      // or
-      //newTask.remove();
+        inputContainer.removeChild(newTask);
+        // or
+        //newTask.remove();
     });
 
     buttonArea.appendChild(deleteButton);
@@ -41,9 +42,25 @@ but.addEventListener('click',function(){
 })
 
 let todo_myForm = document.getElementById("todo_form");
-todo_form.addEventListener("submit",function(e){
+todo_form.addEventListener("submit", function (e) {
     let title = document.getElementById("todo_title");
-    if(todo_title.value.length == 0){
+    if (todo_title.value.length == 0) {
         alert("제목을 입력하세요")
         e.preventDefault();
-    }})
+    }
+})
+
+// let startDateInput = document.querySelector(".date_start");
+// let endDateInput = document.querySelector(".date_end");
+// let submitButton = document.querySelector(".submit");
+
+// submitButton.addEventListener('click', (event) => {
+//     console.log(1)
+//     let startDate = startDateInput.valueAsDate;
+//     let endDate = endDateInput.valueAsDate;
+
+//     if (endDate < startDate) {
+//         alert("마감일이 시작일보다 빠릅니다!");
+//         event.preventDefault(); // 제출 동작 막기
+//     }
+// });
