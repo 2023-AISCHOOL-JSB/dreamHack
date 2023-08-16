@@ -163,7 +163,7 @@ body {
   /* 가운데 정렬을 위해 좌우 여백 자동으로 설정 */
   margin: auto;
   width: 100%;
-  height: 100%;
+  height: 95vh;
   overflow: auto;
   display: flex;
   align-items: center;

@@ -512,8 +512,6 @@
         });
       });
     })();
-    
-
     // end alignment section
     
     // object options section
