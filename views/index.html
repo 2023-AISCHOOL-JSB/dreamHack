@@ -29,8 +29,10 @@
   <link rel="stylesheet" href="grapick.min.css">
   <!-- fabric.js : 취소 및 복원 기능을 지원하는 스택 라이브러리 -->
   <script src="undo-redo-stack.js"></script>
-
-
+</head>
+<body>
+  <!-- 이미지 편집기의 뷰포트를 나타내는 div 요소 생성, 이 요소에 이미지 편집기 나타날 것 -->
+  <div id="image-editor-container"></div>
   <script src="assets/js/lib/core.js"></script>
   <script src="assets/js/lib/toolbar.js"></script>
   <script src="assets/js/lib/canvas.js"></script>
@@ -51,16 +53,8 @@
   <script src="assets/js/lib/zoom.js"></script>
   <script src="assets/js/lib/saveInBrowser.js"></script>
 
+  <!-- 이미지 편집기 초기화하고 동작시키는 자바스크립트 코드 포함되어 있을 것 -->
+  <script src="assets/js/script.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-</head>
-
-<body>
-  <!-- 이미지 편집기의 뷰포트를 나타내는 div 요소 생성, 이 요소에 이미지 편집기 나타날 것 -->
-  <div id="image-editor-container"></div>
 </body>
-
-
-<!-- 이미지 편집기 초기화하고 동작시키는 자바스크립트 코드 포함되어 있을 것 -->
-<script src="assets/js/script.js"></script>
-
 </html>

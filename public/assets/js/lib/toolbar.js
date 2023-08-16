@@ -401,7 +401,9 @@ dreamBoardText.style.fontFamily = "'Black Han Sans', sans-serif";
               // send 버튼 클릭 시 수행할 동작 추가
               // 예: 메시지 보내기 등
               if (window.confirm('마이드림보드에 등록하시겠습니까?')) {
+                // saveInBrowser.send("canvasEditor", _self.canvas.toJSON());
                 _self.canvas.clear(), saveInBrowser.remove('canvasEditor');
+                location.href = "http://localhost:3333/dreamboard_list";
               }
             }
 

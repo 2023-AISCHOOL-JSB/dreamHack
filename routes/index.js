@@ -10,7 +10,7 @@ router.get('/',(req,res)=>{
 
 // 드림보드 페이지 이동 (http://localhost:3333/dreamboard) 이동했을떄
 router.get('/dreamboard',(req,res)=>{
-  res.render("index") // views폴더에서 inndex.html 렌더
+  res.render("index", { obj: req.session.user }); // views폴더에서 inndex.html 렌더
   // res.render("dreamboard",{obj : req.session.user}); //views 파일 안의 dreamboard.html 나타내줌
 })
 
