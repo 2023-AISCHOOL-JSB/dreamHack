@@ -84,6 +84,58 @@ router.post("/add", async function(req, res){
     res.status(500).send('GCS에 업로드하거나 DB에 저장하는 중 오류 발생: ' + err.message);
   }
 });
+
+// /dreamboard/save 연결 시, 클라이언트에서 받은 데이터를 GCS 업로드 및 DB에 추가 + 완료 이미지도 GCS 업로드 및 DB 추가
+router.post("/save", async function (req, res) {
+  const name = req.body.name;
+  const value = req.body.value;
+  // console.log('현재 캔버스 JSON문자열:',value, "-> 타입",typeof(value));
+
+  // 버킷 이름 및 업로드할 파일 이름 설정
+  const bucketName = "dreamboard";
+  const destFileName = `${req.session.user.user_id}_example${timestamp}.txt`; // ${req.session.user.user_id} + 제목
+  // 버킷 및 파일 참조 생성
+  const bucket = storage.bucket(bucketName);
+  const file = bucket.file(destFileName);
+
+  // 데이터를 zlib로 압축
+  const compressed = zlib.deflateSync(Buffer.from(value));
+  console.log(
+    "압축 후 데이터:",
+    compressed,
+    "compressed 데이터 타입: ",
+    typeof compressed
+  );
+  try {
+    // GCS에 압축된 파일 업로드
+    await uploadCompressedBufferToGCS(
+      file,
+      compressed,
+      bucketName,
+      destFileName
+    );
+
+    //GCS에 업로드한 파일의 URL
+    const fileUrl = `https://storage.googleapis.com/${bucketName}/${destFileName}`;
+    console.log("URL의 데이터 타입", typeof fileUrl, "으로 DB에 저장");
+    // GCS에 업로드한 파일의 공개된 URL을 유저ID와 함께 DB에 저장
+    let sql = `INSERT INTO vision_boards (user_id, vision_title, vision_desc, created_at) VALUES ('${req.session.user.user_id}', 'vision_title 1', ?, NOW());`;
+    conn.query(sql, [fileUrl], (err, rows) => {
+      if (err) {
+        res
+        .status(500)
+        .send("데이터베이스에 저장하는 동안 오류가 발생하였습니다.");
+        return;
+      }
+      console.log("데이터베이스에 URL 추가 완료"); // 중간 로그
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .send("GCS에 업로드하거나 DB에 저장하는 중 오류 발생: " + err.message);
+  }
+});
+
 // DB에 마지막으로 저장된 캔버스 객체를 선택하여 해당 경로로 전송
 // vision_seq, user_id, vision_desc(GCS_url) 
 router.get('/loadData', (req, res)=>{

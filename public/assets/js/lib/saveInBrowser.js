@@ -1,4 +1,4 @@
-// 서버에 데이터를 저장하는 함수
+// 서버에 데이터를 저장하는 함수(임시저장)
 function saveDataToServer(name, value) {
   // JSON 데이터를 서버에 전송하기 위한 객체 생성
   const data = {
@@ -26,6 +26,36 @@ function saveDataToServer(name, value) {
   .catch(error => {
       console.error("Error occurred:", error);
   });
+}
+
+// 서버에 데이터를 저장하는 함수(등록하기) 
+function saveDataToServer2(name, value) {
+  // JSON 데이터를 서버에 전송하기 위한 객체 생성
+  const data = {
+    name: name,
+    value: JSON.stringify(value),
+  };
+
+  // '/dreamboard/save' 엔드포인트로 POST 요청을 전송
+  fetch("/dreamboard/save", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json", // 요청 본문의 컨텐츠 타입을 JSON으로 설정
+    },
+    body: JSON.stringify(data), // 데이터 객체를 문자열로 변환하여 본문에 넣음
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`Server returned status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((res) => {
+      console.log("Server Response:", res);
+    })
+    .catch((error) => {
+      console.error("Error occurred:", error);
+    });
 }
 
 // URL로부터 데이터를 가져오는 함수
@@ -78,9 +108,9 @@ window.saveInBrowser = {
       value = JSON.stringify(value);
     }
     saveDataToServer(name, value);
-
   },
-  load: async(name) => { //async
+  load: async (name) => {
+    //async
     let value = await getData();
     // console.log("loadData : ",JSON.parse(value))
     // 가져온 값을 JSON 객체로 변환하여 반환
@@ -89,5 +119,12 @@ window.saveInBrowser = {
   remove: (name) => {
     // 로컬 스토리지에서 해당 이름의 항목을 제거합니다
     localStorage.removeItem(name);
-  }
-}
+  },
+  send: (name, value) => {
+    // 값이 객체인 경우, 문자열로 변환합니다
+    if (value instanceof Object) {
+      value = JSON.stringify(value);
+    }
+    saveDataToServer2(name, value);
+  },
+};
