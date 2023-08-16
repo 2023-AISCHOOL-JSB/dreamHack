@@ -17,11 +17,43 @@ router.post('/add',(req,res)=>{
         console.log("전송완료")
         res.send("<script>location.href='http://localhost:3333/mypage_todolist'</script>")
     })
-
-    
-    
 })
 
+router.post('/check',(req,res)=>{
+    console.log(req.body);
+
+    let {checked, goal_seq, list_len, due_date ,complete_percent} = req.body
+
+    if (!Array.isArray(checked)){
+        checked = [req.body.checked]   
+    }
+
+    console.log(checked.length);
+    let checkedLen = checked.length
+
+    let percent = parseFloat(complete_percent) + parseFloat(100/due_date *(checkedLen/list_len))
+
+    if(percent>=100){
+        percent = 100
+    }
+
+    console.log(percent);
+    let sql = "update goals set complete_percent =? where goal_seq = ?"
+
+    conn.query(sql, [percent,goal_seq],(err,rows)=>{
+        if(rows.affectedRows>0){
+            res.send(
+              `'<script>alert("수고하셨습니다.");location.href="http://localhost:3333/todoList_content?num=${goal_seq}"</script>'`
+            );
+        }
+        else{
+            res.send(
+              `'<script>alert("오류발생");location.href="http://localhost:3333/todoList_content?num=${goal_seq}"</script>'`
+            );
+        }
+    })
+
+})
 
 
 module.exports = router;

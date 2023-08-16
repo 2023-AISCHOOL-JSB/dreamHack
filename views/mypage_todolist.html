@@ -13,18 +13,20 @@
                     <div class="top">
                         <div class="num"><p>번호</p></div>
                         <div class="title"><p>제목</p></div>
-                        <div class="count"><p>달성도</p></div>
+                        <div class="count_title"><p>달성도</p></div>
                     </div>
+                    
                     {% for i in goals %}
                     <div>
                         <div class="num">
-                            <p>{{i.goal_seq}}</p>
+                            <p>{{loop.index}}</p>
                         </div>
                         <div class="title">
-                            <a href="/todolist_content?num={{i.goal_seq}}">{{i.goal_title}}</a>
+                            <a href="/todolist_content?&num={{i.goal_seq}}&index={{loop.index}}">{{i.goal_title}}</a>
                         </div>
-                        <div class="count">
-                            <progress value="{{i.complete_percent}}" max="100"></progress>
+                        <div class="progress_bar">
+                            <div id="progress_real_div"><progress id="progress_real" value="{{i.complete_percent}}" max="100"></progress>&nbsp;</div> 
+                            <div id="progress_percentage">{{i.complete_percent.toFixed(1)}}%</div>
                         </div>
                     </div>
                     {% endfor %}

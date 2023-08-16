@@ -34,6 +34,19 @@ h1{
     font-size: 37.5px;
 }
 
+#account_id{
+    width: 500px;
+    height: 42px;
+    font-size: 15px;
+    border: 3px solid black;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: wh;
+    /* margin-top: 20px; */
+    font-family: 'KotraBold';
+}
+
 .int__area{
     display: flex;
     justify-content: center;

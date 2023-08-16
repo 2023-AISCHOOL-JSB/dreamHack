@@ -104,6 +104,7 @@ a {
 .board_list > div {
     border-bottom: 1px solid #ddd;
     font-size: 0;
+    display: flex;
 }
 
 .board_list > div.top {
@@ -120,6 +121,7 @@ a {
     padding: 15px 0;
     text-align: center;
     font-size: 15px;
+    /* 치외법권, 폰트 사이즈 건들지 말것 */
 }
 
 .board_list > div.top > div {
@@ -129,6 +131,10 @@ a {
 
 .board_list .num {
     width: 10%;
+}
+
+.count_title{
+    margin-left: 12.5%;
 }
 
 .board_list .title {
@@ -331,4 +337,53 @@ a {
     justify-content: center;
     align-items: center;
     margin-top: 4%;
+}
+
+#my_community_top{
+    border-bottom: 1px solid #999;
+    font-family: 'KotraBold';
+    display: flex;
+    justify-content: space-around;
+    font-size: 17px;
+}
+#my_com_p{
+    font-size: 17px;
+}
+
+/* .progress_bar{
+    display: flex;
+    justify-content: center;
+} */
+
+#progress_real{
+    width: 250px;
+    height: 18px;
+}
+#progress_percentage{
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    margin-left: 7%;
+}
+#progress_real_div{
+    position: absolute;
+}
+#todolist_line{
+    display: flex;
+    justify-content: space-between;
+}
+#check_real{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border:3px solid #707070;
+    position: relative;
+}
+#check_progress{
+    width: 60%;
+}
+#check_percentage{
+    display: flex;
+    justify-content: center;
 }

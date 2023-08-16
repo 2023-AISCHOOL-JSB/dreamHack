@@ -10,7 +10,8 @@ router.get('/',(req,res)=>{
 
 // 드림보드 페이지 이동 (http://localhost:3333/dreamboard) 이동했을떄
 router.get('/dreamboard',(req,res)=>{
-  res.render("dreamboard",{obj : req.session.user}); //views 파일 안의 dreamboard.html 나타내줌
+  res.render("index") // views폴더에서 inndex.html 렌더
+  // res.render("dreamboard",{obj : req.session.user}); //views 파일 안의 dreamboard.html 나타내줌
 })
 
 // 로그인 페이지 이동 (http://localhost:3333/login) 이동했을떄
@@ -31,9 +32,9 @@ router.get('/mypage_manage',(req,res)=>{
 // 마이페이지 투두리스트 페이지이동
 router.get('/mypage_todolist',(req,res)=>{
 
-  let sql = "select goal_seq, goal_title, complete_percent from goals"
+  let sql = "select goal_seq, goal_title, complete_percent from goals where user_id = ?"
 
-  conn.query(sql,(err, rows)=>{
+  conn.query(sql,[req.session.user.user_id],(err, rows)=>{
     res.render("mypage_todolist", { obj: req.session.user , goals : rows});
   })
 
@@ -157,19 +158,23 @@ router.get('/write', (req, res) => {
 
 //게시글 수정 페이지 이동
 router.get('/edit', (req, res) => {
-  res.render("edit",{obj : req.session.user});
+
+  let sql = "select * from posts where post_seq = ?"
+
+  conn.query(sql,[req.query.num],(err,rows)=>{
+    res.render("edit", { obj: req.session.user, postInfo: rows });
+  })
+
 });
 
 // 투두리스트 사용자별 콘텐츠 내용
 router.get('/todolist_content',(req,res)=>{
   let goal_num = req.query.num 
-  console.log(goal_num);
   let sql =
-    "select goal_seq, user_id, goal_title, goal_desc, date_format(created_at, '%Y-%m-%d %h:%i:%s') as created_at, complete_percent from goals where goal_seq = ?";
-  
+    "select goal_seq, user_id, goal_title, goal_desc, datediff(end_at, start_at) as due_date, date_format(created_at, '%Y-%m-%d %h:%i:%s') as created_at, complete_percent from goals where goal_seq = ?";
   conn.query(sql,[goal_num],(err,rows)=>{
     rows[0].goal_desc = JSON.parse(rows[0].goal_desc);
-     res.render("todolist_content", { obj: req.session.user , todoList: rows});
+    res.render("todolist_content", { obj: req.session.user , todoList: rows , index : req.query.index});
   })
 })
 
@@ -183,5 +188,24 @@ router.get('/mydreamboard_content',(req,res)=>{
   res.render("mydreamboard_content",{obj : req.session.user});
 })
 
+// 마이페이지 계정확인 페이지 이동
+router.get('/account_check',(req,res)=>{
+  res.render("account_check",{obj : req.session.user});
+})
+
+// 내가 쓴 게시글 페이지 이동 (http://localhost:3333/dreamboard) 이동했을떄
+router.get('/my_Community',(req,res)=>{
+
+  let sql =
+    "select post_seq, post_title, post_conent, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts where user_id = ? order by post_seq desc"
+    
+  conn.query(sql,[req.session.user.user_id],(err,rows)=>{
+
+    res.render("my_Community", { obj: req.session.user , list : rows});
+  })
+
+
+
+})
 
 module.exports = router;

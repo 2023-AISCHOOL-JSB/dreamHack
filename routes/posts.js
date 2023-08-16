@@ -9,7 +9,7 @@ router.post('/write',(req,res)=>{
   let { post_title, post_conent } = req.body;
   // console.log(`${req.session.user.user_id}`)
 
-  let sql = `INSERT INTO posts (post_title, post_conent, post_file, posted_at, post_views, post_likes, user_id) VALUES (?, ?, 'post_file 1', NOW(), 1, 1, '${req.session.user.user_id}');`
+  let sql = `INSERT INTO posts (post_title, post_conent, post_file, posted_at, post_views, post_likes, user_id) VALUES (?, ?, 'post_file 1', NOW(), 0, 0, '${req.session.user.user_id}');`
 
   console.log(sql)
   conn.query(sql, [post_title, post_conent], (err, rows) => {
@@ -28,5 +28,22 @@ router.post('/write',(req,res)=>{
   })
 })
 
+router.post('/edit',(req,res)=>{
+  console.log(req.body);
+  let {post_title, post_conent, post_seq} = req.body
+
+  let sql =
+    "update posts set post_title = ?, post_conent = ? where post_seq = ?"
+  
+  conn.query(sql,[post_title,post_conent,post_seq],(err,rows)=>{
+    if(rows.affectedRows > 0){
+      res.send(
+        `'<script>location.href="http://localhost:3333/view?num=${post_seq}"</script>'`
+      );
+    }
+    
+  })
+
+})
 
 module.exports = router;

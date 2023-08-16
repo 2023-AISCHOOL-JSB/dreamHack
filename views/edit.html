@@ -13,19 +13,20 @@
                 <div class="title">
                     <dl>
                         <dt>제목</dt>
-                        <dd><input type="text" placeholder="제목 입력" name="post_title"></dd>
+                        <dd><input type="text" placeholder="제목 입력" name="post_title" value="{{postInfo[0].post_title}}"></dd>
                     </dl>
                 </div>
                 <div class="info">
                     <!--  -->
                 </div>
                 <div class="cont">
-                    <textarea placeholder="내용 입력" name="post_conent"></textarea>
+                    <textarea placeholder="내용 입력" name="post_conent">{{postInfo[0].post_conent}}</textarea>
                 </div>
+                <input type="hidden" name="post_seq" value="{{postInfo[0].post_seq}}">
             </div>
             <div class="bt_wrap">
                 <input type="submit" name="" class="submit">
-                <button class="submit" type="button"><a href="community">취소</a></button>
+                <button class="submit" type="button"><a href="view?num={{postInfo[0].post_seq}}">취소</a></button>
             </div>
         </div>
     </div>
