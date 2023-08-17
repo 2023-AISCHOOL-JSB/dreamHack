@@ -78,11 +78,6 @@ router.get('/todolist_write',(req,res)=>{
   // html 이름   {객체 :  }
 })
 
-// 투두리스트 본문 내용
-router.get('/todolist',(req,res)=>{
-  res.render("todolist",{obj : req.session.user});
-})
-
 // 회원 탈퇴 페이지 이동
 router.get('/user_out', (req, res) => {
   res.render("user_out",{obj : req.session.user});
@@ -219,11 +214,6 @@ router.get('/dreamboard_list',(req,res)=>{
     console.log("이미지:" + rows.vision_img);
     res.render("dreamboard_list", { obj: req.session.user , dreamBoardList : rows});
   })
-})
-
-//마이드림보드 컨텐츠
-router.get('/mydreamboard_content',(req,res)=>{
-  res.render("mydreamboard_content",{obj : req.session.user});
 })
 
 // 마이페이지 계정확인 페이지 이동
