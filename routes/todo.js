@@ -55,5 +55,8 @@ router.post('/check',(req,res)=>{
 
 })
 
+router.get('/delete',(req,res)=>{
+    console.log(req.params);
+})
 
 module.exports = router;
