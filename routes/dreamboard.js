@@ -20,10 +20,11 @@ const storage = new Storage({
 // destFileName => 업로드할 파일 이름
 async function uploadCompressedBufferToGCS(file, compressed, bucketName, destFileName) {
   try {
-    console.log(compressed, "중간 로그 1:");
+    console.log(compressed, "중간 로그 2:");
     // GCS에 압축된 데이터를 저장(업로드)하는 부분
     await file.save(compressed, {
         // 업로드될 데이터의 메타데이터 설정
+
         metadata: {
             // 데이터의 MIME 타입 설정. 여기서는 바이너리 데이터를 나타냄
             // contentType: 'application/octet-stream',
@@ -34,6 +35,31 @@ async function uploadCompressedBufferToGCS(file, compressed, bucketName, destFil
     console.log(`압축파일 ${bucketName}에 ${destFileName} 업로드`); // 중간 로그
   } catch (error) {
       console.error("GCS 업로드 중 오류 발생:", error);
+  }
+}
+
+async function uploadCompressedBufferToGCS2(
+  file,
+  compressed,
+  bucketName,
+  destFileName
+) {
+  try {
+    console.log(compressed, "중간 로그 2:");
+    // GCS에 압축된 데이터를 저장(업로드)하는 부분
+    await file.save(compressed, {
+      // 업로드될 데이터의 메타데이터 설정
+
+      metadata: {
+        // 데이터의 MIME 타입 설정. 여기서는 바이너리 데이터를 나타냄
+        contentType: 'application/octet-stream',
+        contentEncoding: 'deflate' // 'deflate'
+        // contentType: "application/octet-stream"
+      },
+    });
+    console.log(`압축파일 ${bucketName}에 ${destFileName} 업로드`); // 중간 로그
+  } catch (error) {
+    console.error("GCS 업로드 중 오류 발생:", error);
   }
 }
 
@@ -85,15 +111,30 @@ router.post("/add", async function(req, res){
   }
 });
 
-// /dreamboard/save 연결 시, 클라이언트에서 받은 데이터를 GCS 업로드 및 DB에 추가 + 완료 이미지도 GCS 업로드 및 DB 추가
-router.post("/save", async function (req, res) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /dreamboard/send 연결 시, 클라이언트에서 받은 데이터를 GCS 업로드 및 DB에 추가 + 완료 이미지도 GCS 업로드 및 DB 추가
+router.post("/send", async function (req, res) {
   const name = req.body.name;
   const value = req.body.value;
+  console.log("현재 value: " + value.length);
   // console.log('현재 캔버스 JSON문자열:',value, "-> 타입",typeof(value));
 
   // 버킷 이름 및 업로드할 파일 이름 설정
   const bucketName = "dreamboard";
-  const destFileName = `${req.session.user.user_id}_example${timestamp}.txt`; // ${req.session.user.user_id} + 제목
+  const destFileName = `${req.session.user.user_id}_saved${timestamp}.txt`; // ${req.session.user.user_id} + 제목
   // 버킷 및 파일 참조 생성
   const bucket = storage.bucket(bucketName);
   const file = bucket.file(destFileName);
@@ -108,7 +149,7 @@ router.post("/save", async function (req, res) {
   );
   try {
     // GCS에 압축된 파일 업로드
-    await uploadCompressedBufferToGCS(
+    await uploadCompressedBufferToGCS2(
       file,
       compressed,
       bucketName,
@@ -119,7 +160,7 @@ router.post("/save", async function (req, res) {
     const fileUrl = `https://storage.googleapis.com/${bucketName}/${destFileName}`;
     console.log("URL의 데이터 타입", typeof fileUrl, "으로 DB에 저장");
     // GCS에 업로드한 파일의 공개된 URL을 유저ID와 함께 DB에 저장
-    let sql = `INSERT INTO vision_boards (user_id, vision_title, vision_desc, created_at) VALUES ('${req.session.user.user_id}', 'vision_title 1', ?, NOW());`;
+    let sql = `INSERT INTO vision_boards_saved (user_id, my_vision_title, my_vision_desc, vision_img, created_at) VALUES ('${req.session.user.user_id}', 'vision_title 1', ? , "url" ,NOW());`;
     conn.query(sql, [fileUrl], (err, rows) => {
       if (err) {
         res

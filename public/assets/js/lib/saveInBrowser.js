@@ -29,7 +29,7 @@ function saveDataToServer(name, value) {
 }
 
 // 서버에 데이터를 저장하는 함수(등록하기) 
-function saveDataToServer2(name, value) {
+function sendDataToServer(name, value) {
   // JSON 데이터를 서버에 전송하기 위한 객체 생성
   const data = {
     name: name,
@@ -37,7 +37,7 @@ function saveDataToServer2(name, value) {
   };
 
   // '/dreamboard/save' 엔드포인트로 POST 요청을 전송
-  fetch("/dreamboard/save", {
+  fetch("/dreamboard/send", {
     method: "POST",
     headers: {
       "Content-Type": "application/json", // 요청 본문의 컨텐츠 타입을 JSON으로 설정
@@ -125,6 +125,6 @@ window.saveInBrowser = {
     if (value instanceof Object) {
       value = JSON.stringify(value);
     }
-    saveDataToServer2(name, value);
+    sendDataToServer(name, value);
   },
 };
