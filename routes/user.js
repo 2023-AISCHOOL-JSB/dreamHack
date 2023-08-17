@@ -60,28 +60,32 @@ router.get('/logout', (req, res) => {
 // 회원 탈퇴 기능 라우터
 router.post('/user_out',(req,res)=>{
     let {user_id, user_pw} = req.body
-    
+
+    let sql4 = "delete from goals where user_id = ?"
+    let sql3 = "update comments set user_id = '탈퇴한 유저' where user_id = ?"
     let sql2 = "update posts set user_id = '탈퇴한 유저' where user_id = ?;"
     
     let sql = "delete from users where user_id = ? and user_pw = ?"
 
-    conn.query(sql2,[user_id],(err, rows)=>{
-        if (rows.affectedRows > 0) {
-            conn.query(sql,[user_id,user_pw],(err, rows)=>{
-                if (rows.affectedRows > 0) {
-                    console.log('회원탈퇴 성공', rows)
-                    req.session.destroy()
-                    res.send("<script>alert('회원탈퇴 성공');location.href='http://localhost:3333'</script>")
-        
-                } else {
-                    console.log('회원탈퇴 실패!')
-                    res.send('<script>alert("회원탈퇴실패");location.href="http://localhost:3333/user_out"</script>')
-                }
-            })
-        } else {
-            console.log('회원탈퇴 실패!')
-            res.send('<script>alert("회원탈퇴실패");location.href="http://localhost:3333/user_out"</script>')
-        }
+    conn.query(sql4,[user_id],(err,rows)=>{
+        conn.query(sql3, [user_id], (err, rows) => {
+          conn.query(sql2, [user_id], (err, rows) => {
+            conn.query(sql, [user_id, user_pw], (err, rows) => {
+              if (rows.affectedRows > 0) {
+                console.log("회원탈퇴 성공", rows);
+                req.session.destroy();
+                res.send(
+                  "<script>alert('회원탈퇴 성공');location.href='http://localhost:3333'</script>"
+                );
+              } else {
+                console.log("회원탈퇴 실패!");
+                res.send(
+                  '<script>alert("회원탈퇴실패");location.href="http://localhost:3333/user_out"</script>'
+                );
+              }
+            });
+          });
+        });
     })
 })
 
