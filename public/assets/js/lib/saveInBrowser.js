@@ -29,11 +29,12 @@ function saveDataToServer(name, value) {
 }
 
 // 서버에 데이터를 저장하는 함수(등록하기) 
-function sendDataToServer(name, value) {
+function sendDataToServer(name, value , url) {
   // JSON 데이터를 서버에 전송하기 위한 객체 생성
   const data = {
     name: name,
     value: JSON.stringify(value),
+    url : encodeURIComponent(url)
   };
 
   // '/dreamboard/save' 엔드포인트로 POST 요청을 전송
@@ -120,11 +121,11 @@ window.saveInBrowser = {
     // 로컬 스토리지에서 해당 이름의 항목을 제거합니다
     localStorage.removeItem(name);
   },
-  send: (name, value) => {
+  send: (name, value, url) => {
     // 값이 객체인 경우, 문자열로 변환합니다
     if (value instanceof Object) {
       value = JSON.stringify(value);
     }
-    sendDataToServer(name, value);
+    sendDataToServer(name, value ,url);
   },
 };

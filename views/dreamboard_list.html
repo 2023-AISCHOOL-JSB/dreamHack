@@ -1,6 +1,4 @@
-{% extends 'layout.html'%}
-
-{% block content%}
+{% extends 'layout.html'%} {% block content%}
 <div class="todolist_form">
     <div class="myPage__ToDoList">
         {% include 'category.html'%}
@@ -11,22 +9,22 @@
             <div class="board_list_wrap">
                 <div class="board_list" id="main">
                     <!-- <div class="top">
-                        <!-- <div class="num"><p>번호</p></div>
+                        <div class="num"><p>번호</p></div>
                         <div class="title"><p>제목</p></div>
                         <div class="count_title"><p>글쓴이</p></div> -->
                     <!-- </div> -->
                     <div id="dreamboard_container">
                         <div id="dreamboard_top">
-                            <div id="dream_left">1</div>
-                            <div id="deram_right">2</div>
+                            <div id="dream_left"><a href="/dreamboard"><img src="/images/dreaming1.png" class="dreamimg" alt=""></a></div>
+                            <div id="deram_right"><a href="/dreamboard"><img src="/images/dreaming2.png" class="dreamimg" alt=""></a></div>
                         </div>
                         <!-- <div id="dreamboard_middle">
                             <div id="dream_left">3</div>
                             <div id="deram_right">4</div>
                         </div> -->
                         <div id="dreamboard_bottom">
-                            <div id="dream_left">5</div>
-                            <div id="deram_right">6</div>
+                            <div id="dream_left"><a href="/dreamboard"><img src="/images/dreaming3.png" class="dreamimg" alt=""></a></div>
+                            <div id="deram_right"><a href="/dreamboard"><img src="/images/dreaming4.png" class="dreamimg" alt=""></a></div>
                         </div>
 
                     </div>
