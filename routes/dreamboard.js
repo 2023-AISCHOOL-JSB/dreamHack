@@ -20,7 +20,7 @@ const storage = new Storage({
 // destFileName => 업로드할 파일 이름
 async function uploadCompressedBufferToGCS(file, compressed, bucketName, destFileName) {
   try {
-    console.log(compressed, "중간 로그 2:");
+    // console.log(compressed, "중간 로그 2:");
     // GCS에 압축된 데이터를 저장(업로드)하는 부분
     await file.save(compressed, {
         // 업로드될 데이터의 메타데이터 설정
@@ -45,7 +45,7 @@ async function uploadCompressedBufferToGCS2(
   destFileName
 ) {
   try {
-    console.log(compressed, "중간 로그 2:");
+    // console.log(compressed, "중간 로그 2:");
     // GCS에 압축된 데이터를 저장(업로드)하는 부분
     await file.save(compressed, {
       // 업로드될 데이터의 메타데이터 설정
@@ -63,6 +63,31 @@ async function uploadCompressedBufferToGCS2(
   }
 }
 
+async function uploadImg(
+  file2,
+  url,
+  bucketName,
+  destFileName2
+) {
+  console.log("url값:", url)
+  try {
+    // console.log(url, "중간 로그 2:");
+    // GCS에 압축된 데이터를 저장(업로드)하는 부분
+    await file2.save(url, {
+      // 업로드될 데이터의 메타데이터 설정
+
+      metadata: {
+        // 데이터의 MIME 타입 설정. 여기서는 바이너리 데이터를 나타냄
+        contentType: 'data:image/svg+xml;charset=utf-8',
+      },
+    });
+    // console.log(`압축파일 ${bucketName}에 ${destFileName2} 업로드`); // 중간 로그
+  } catch (error) {
+    console.error("GCS 업로드 중 오류 발생:", error);
+  }
+}
+
+
 
 // /dreamboard/add 연결 시, 클라이언트에서 받은 데이터를 GCS 업로드 및 DB에 추가
 router.post("/add", async function(req, res){
@@ -79,14 +104,14 @@ router.post("/add", async function(req, res){
   
   // 데이터를 zlib로 압축
   const compressed = zlib.deflateSync(Buffer.from(value));
-  console.log("압축 후 데이터:", compressed, "compressed 데이터 타입: ",typeof(compressed));
+  // console.log("압축 후 데이터:", compressed, "compressed 데이터 타입: ",typeof(compressed));
   try {
     // GCS에 압축된 파일 업로드
     await uploadCompressedBufferToGCS(file, compressed, bucketName, destFileName);
 
     //GCS에 업로드한 파일의 URL
     const fileUrl = `https://storage.googleapis.com/${bucketName}/${destFileName}`;
-    console.log("URL의 데이터 타입", typeof(fileUrl),"으로 DB에 저장")
+    // console.log("URL의 데이터 타입", typeof(fileUrl),"으로 DB에 저장")
     // GCS에 업로드한 파일의 공개된 URL을 유저ID와 함께 DB에 저장
     let sql = `INSERT INTO vision_boards (user_id, vision_title, vision_desc, created_at) VALUES ('${req.session.user.user_id}', 'vision_title 1', ?, NOW());`
     let sql2 = `UPDATE vision_boards SET vision_desc = ?, created_at = NOW() WHERE user_id = '${req.session.user.user_id}'`
@@ -116,25 +141,28 @@ router.post("/send", async function (req, res) {
   const name = req.body.name;
   const value = req.body.value;
   const url = req.body.url;
-  console.log("현재 url" + url.length);
-  console.log("현재 value: " + value.length);
+  // console.log("현재 url" + url.length);
+  // console.log("현재 value: " + value.length);
   // console.log('현재 캔버스 JSON문자열:',value, "-> 타입",typeof(value));
 
   // 버킷 이름 및 업로드할 파일 이름 설정
   const bucketName = "dreamboard";
   const destFileName = `${req.session.user.user_id}_saved${timestamp}.txt`; // ${req.session.user.user_id} + 제목
+  const destFileName2 = `${req.session.user.user_id}_imgUrl${timestamp}.txt`; // ${req.session.user.user_id} + 제목
   // 버킷 및 파일 참조 생성
   const bucket = storage.bucket(bucketName);
   const file = bucket.file(destFileName);
+  const file2 = bucket.file(destFileName2);
 
   // 데이터를 zlib로 압축
   const compressed = zlib.deflateSync(Buffer.from(value));
-  console.log(
-    "압축 후 데이터:",
-    compressed,
-    "compressed 데이터 타입: ",
-    typeof compressed
-  );
+  const compressed2 = zlib.deflateSync(Buffer.from(url));
+  // console.log(
+  //   "압축 후 데이터:",
+  //   compressed,
+  //   "compressed 데이터 타입: ",
+  //   typeof compressed
+  // );
   try {
     // GCS에 압축된 파일 업로드
     await uploadCompressedBufferToGCS2(
@@ -143,13 +171,15 @@ router.post("/send", async function (req, res) {
       bucketName,
       destFileName
     );
+    await uploadImg(file2,compressed2,bucketName,destFileName2);
 
     //GCS에 업로드한 파일의 URL
     const fileUrl = `https://storage.googleapis.com/${bucketName}/${destFileName}`;
+    const imgUrl = `https://storage.googleapis.com/${bucketName}/${destFileName2}`;
     console.log("URL의 데이터 타입", typeof fileUrl, "으로 DB에 저장");
     // GCS에 업로드한 파일의 공개된 URL을 유저ID와 함께 DB에 저장
-    let sql = `INSERT INTO vision_boards_saved (user_id, my_vision_title, my_vision_desc, vision_img, created_at) VALUES ('${req.session.user.user_id}', 'vision_title 1', ? , "url" ,NOW());`;
-    conn.query(sql, [fileUrl], (err, rows) => {
+    let sql = `INSERT INTO vision_boards_saved (user_id, my_vision_title, my_vision_desc, vision_img, created_at) VALUES ('${req.session.user.user_id}', 'vision_title 1', ? , ? ,NOW());`;
+    conn.query(sql, [fileUrl,imgUrl], (err, rows) => {
       if (err) {
         res
         .status(500)

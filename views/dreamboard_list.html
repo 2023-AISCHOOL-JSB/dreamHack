@@ -1,46 +1,40 @@
-{% extends 'layout.html'%}
-
-{% block content%}
+{% extends 'layout.html'%} {% block content%}
 <div class="todolist_form">
-    <div class="myPage__ToDoList">
-        {% include 'category.html'%}
-        <div class="todolist_board_wrap">
-            <div class="board_title">
-                <strong>마이 드림보드</strong>
+  <div class="myPage__ToDoList">
+    {% include 'category.html'%}
+    <div class="todolist_board_wrap">
+      <div class="board_title">
+        <strong>마이 드림보드</strong>
+      </div>
+      <div class="board_list_wrap">
+        <div class="board_list" id="main">
+          <div id="dreamboard_container">
+            <!-- {% for i in dreamBoardList %}
+            <div>{{i.vision_img}}</div>
+            {% endfor%} -->
+            <div id="dreamboard_top">
+              <div id="dream_left">1</div>
+              <div id="deram_right">2</div>
             </div>
-            <div class="board_list_wrap">
-                <div class="board_list" id="main">
-                    <div class="top">
-                        <!-- <div class="num"><p>번호</p></div>
-                        <div class="title"><p>제목</p></div>
-                        <div class="count_title"><p>글쓴이</p></div> -->
-                    </div>
-                    <div id="dreamboard_container">
-                        <div id="dreamboard_top">
-                            <div id="dream_left">1</div>
-                            <div id="deram_right">2</div>
-                        </div>
-                        <div id="dreamboard_middle">
-                            <div id="dream_left">3</div>
-                            <div id="deram_right">4</div>
-                        </div>
-                        <div id="dreamboard_bottom">
-                            <div id="dream_left">5</div>
-                            <div id="deram_right">6</div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="board_page">
-                    <a href="#" class="bt first">
-                        << <a href="#" class="bt prev">
-                            < <a href="#" class="num on">1
-                    </a>
-                    <a href="#" class="bt next">></a>
-                    <a href="#" class="bt last">>></a>
-                </div>
+            <div id="dreamboard_middle">
+              <div id="dream_left">3</div>
+              <div id="deram_right">4</div>
             </div>
+            <div id="dreamboard_bottom">
+              <div id="dream_left">5</div>
+              <div id="deram_right">6</div>
+            </div>
+          </div>
         </div>
+        <div class="board_page">
+          <a href="#" class="bt first"><< </a>
+          <a href="#" class="bt prev"><</a>
+          <a href="#" class="num on">1</a>
+          <a href="#" class="bt next">></a>
+          <a href="#" class="bt last">>></a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 {% endblock%}

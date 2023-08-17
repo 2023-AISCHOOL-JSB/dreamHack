@@ -211,7 +211,14 @@ router.get('/todolist_content',(req,res)=>{
 
 //마이드림보드 리스트
 router.get('/dreamboard_list',(req,res)=>{
-  res.render("dreamboard_list",{obj : req.session.user});
+  let user = req.session.user.user_id;
+  let sql = "select my_vision_seq, my_vision_title, vision_img from vision_boards_saved where user_id = ? ORDER BY my_vision_seq desc"
+
+  conn.query(sql,[user],(err, rows)=>{
+
+    console.log("이미지:" + rows.vision_img);
+    res.render("dreamboard_list", { obj: req.session.user , dreamBoardList : rows});
+  })
 })
 
 //마이드림보드 컨텐츠
