@@ -415,3 +415,15 @@ a {
     align-items: center;
     justify-content: center;
 }
+.comments_list{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2px;
+}
+.comments_con{
+    display: flex;
+}
+.comments_title{
+    padding: 5px;
+    font-size: 22px;
+}
