@@ -32,11 +32,17 @@
                     {% endfor %}
                 </div>
                 <div class="board_page">
-                    <a href="#" class="bt first"><<</a>
-                    <a href="#" class="bt prev"><</a>
-                    <a href="#" class="num on">1</a>
-                    <a href="#" class="bt next">></a>
-                    <a href="#" class="bt last">>></a>
+                    {% if  term !== 0 %}
+                    <a href="mypage_todolist?page=1" class="bt first"><<</a>
+                    <a href="mypage_todolist?page={{startPageNum-1}}" class="bt prev"><</a>
+                    {% endif %}
+                    {% for i in range(startPageNum, endPageNum) %}
+                    <a href="mypage_todolist?page={{i}}" class="num on">{{i}}</a>
+                    {% endfor %}
+                    {% if endPageNum-1 !== totalPage%}
+                    <a href="mypage_todolist?page={{endPageNum+1}}" class="bt next">></a>
+                    <a href="mypage_todolist?page={{totalPage}}" class="bt last">>></a>
+                    {% endif %}
                 </div>
                 <div class="bt_wrap">
                     <button onclick="location.href='todolist_write'" type="submit" class="submit_button">등록</button>

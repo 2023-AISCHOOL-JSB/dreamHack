@@ -31,11 +31,42 @@ router.get('/mypage_manage',(req,res)=>{
 
 // 마이페이지 투두리스트 페이지이동
 router.get('/mypage_todolist',(req,res)=>{
+  let page = req.query.page
 
-  let sql = "select goal_seq, goal_title, complete_percent from goals where user_id = ?"
+  let sql = "select goal_seq, goal_title, complete_percent from goals where user_id = ?";
+
+  if(page == undefined){
+    page = 1;
+  }
+  if(page <=0){
+    page = 1;
+  }
 
   conn.query(sql,[req.session.user.user_id],(err, rows)=>{
-    res.render("mypage_todolist", { obj: req.session.user , goals : rows});
+    let allPosts = rows.length;
+    let itemCntPerPage = 5; // 한 페이지에 보이는 게시글 수
+    let itemCntPerPagingNum = 5; // 한 번에 보이는 페이징 넘버 수
+    let totalPage = allPosts % itemCntPerPage != 0 ? parseInt(allPosts / itemCntPerPage) + 1 : parseInt(allPosts / itemCntPerPage);
+    let endPageNum = (parseInt((page - 1) / itemCntPerPagingNum) + 1) * itemCntPerPagingNum;
+    let term = parseInt((page - 1) / itemCntPerPagingNum);
+    let startPageNum = endPageNum - itemCntPerPagingNum + 1;
+
+    if(endPageNum >= totalPage) {
+      endPageNum = totalPage;
+    }
+    let sql2 = "select goal_seq, goal_title, complete_percent from goals where user_id = ? order by goal_seq desc limit ? ,?";
+    let postIndex = (page - 1) * itemCntPerPage;
+    let user = req.session.user.user_id;
+    conn.query(sql2,[user,postIndex,itemCntPerPage],(err,rows)=>{
+      res.render("mypage_todolist", { 
+        obj: req.session.user,
+        goals: rows,
+        term : term,
+        totalPage : totalPage,
+        endPageNum : endPageNum + 1,
+        startPageNum : startPageNum
+       });
+    })
   })
 
 })
@@ -86,7 +117,7 @@ router.get("/community/", (req, res) => {
 
     let sql2 =
       "select post_seq, post_title, post_conent, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts order by post_seq desc limit ? ,?";
-    postIndex = (page-1) * itemCntPerPage;
+    let postIndex = (page-1) * itemCntPerPage;
 
     conn.query(sql2,[postIndex,itemCntPerPage],(err, rows)=>{
       res.render("community", {
@@ -195,13 +226,42 @@ router.get('/account_check',(req,res)=>{
 
 // 내가 쓴 게시글 페이지 이동 (http://localhost:3333/dreamboard) 이동했을떄
 router.get('/my_Community',(req,res)=>{
+  let page = req.query.page;
 
   let sql =
     "select post_seq, post_title, post_conent, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts where user_id = ? order by post_seq desc"
-    
+  if(page == undefined){
+    page = 1;
+  } 
+  if (page <=0) {
+    page = 1;
+  }
   conn.query(sql,[req.session.user.user_id],(err,rows)=>{
+    let allPosts = rows.length;
+    let itemCntPerPage = 5; // 한 페이지에 보이는 게시글 수
+    let itemCntPerPagingNum = 5; // 한 번에 보이는 페이징 넘버 수
+    let totalPage = allPosts % itemCntPerPage != 0 ? parseInt(allPosts / itemCntPerPage)+1 : parseInt(allPosts / itemCntPerPage);
+    let endPageNum = (parseInt((page - 1) / itemCntPerPagingNum) + 1) * itemCntPerPagingNum;
+    let term = parseInt((page - 1) / itemCntPerPagingNum);
+    let startPageNum = endPageNum - itemCntPerPagingNum + 1;
 
-    res.render("my_Community", { obj: req.session.user , list : rows});
+    if(endPageNum >= totalPage) {
+      endPageNum = totalPage;
+    }
+    let sql2 =
+      "select post_seq, post_title, post_conent, date_format(posted_at, '%Y-%m-%d') as posted_at, post_views, post_likes, user_id  from posts where user_id = ? order by post_seq desc limit ? ,?";
+    let postIndex = (page-1) * itemCntPerPage;
+    let user = req.session.user.user_id;
+    conn.query(sql2,[user,postIndex,itemCntPerPage],(err,rows)=>{
+      res.render("my_Community", {
+        obj: req.session.user,
+        list: rows,
+        term: term,
+        totalPage: totalPage,
+        endPageNum: endPageNum + 1,
+        startPageNum: startPageNum,
+      });
+    })
   })
 
 
