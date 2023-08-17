@@ -65,7 +65,7 @@ router.post('/delete',(req,res)=>{
     conn.query(sql,[goal_seq],(err,rows)=>{
         if(rows.affectedRows>0){
             res.send(
-              `<script>alert("할일 삭제완료");location.href='http://localhost:3333/mypage_todolist'</script>`
+              `<script>alert("할일 삭제");location.href='http://localhost:3333/mypage_todolist'</script>`
             );
         }
     })
