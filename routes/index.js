@@ -154,23 +154,24 @@ router.get('/count', (req, res) => {
 router.get('/view', (req, res) => {
   let sql =
     "select post_seq, post_title, post_conent, post_file, date_format(posted_at, '%Y-%m-%d %h:%i:%s') as posted_at, post_views, post_likes, user_id from posts where post_seq = ?";
-
-
-  let post_num = req.query.num;
+    let post_num = req.query.num;
   // sql에 쿼리문이 들어간다 ? 는 변수이다
-
   conn.query(sql,[post_num],(err,rows)=>{
-    
     
     // conn 은 require('../config/database') 이다
     // query는 conn에 있는 메서드이다. sql문을 사용할 수 있게해준다.
     // rows 에는 32번째 줄에 sql의 결과물이 들어간다.
     // req.session.user 정보가 obj라는 이름으로 view에 넘어간다.
     // rows 정보가 postContent라는 이름으로 view에 넘어간다.
-    
-    
-    res.render("view",{obj : req.session.user , postContent : rows});
+    let sql2 = "select * from comments where post_seq = ?"
 
+    conn.query(sql2,[post_num],(err,rows2)=>{
+      res.render("view",{
+        obj : req.session.user , 
+        postContent : rows,
+        postComment : rows2
+      });
+    })
   })
 
   

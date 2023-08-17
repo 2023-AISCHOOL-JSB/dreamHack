@@ -43,7 +43,23 @@ router.post('/edit',(req,res)=>{
     }
     
   })
+})
 
+router.post('/comments',(req,res)=>{
+  console.log(req.body);
+  let user = req.session.user.user_id
+  let {comments, post_seq} = req.body
+
+  let sql = `INSERT INTO comments(post_seq, cmt_content, cmt_views, user_id)VALUES(?, ?, 1, ?);`
+  
+  conn.query(sql,[post_seq,comments,user],(err,rows)=>{
+    if(rows.affectedRows>0){
+      res.send(
+        `'<script>location.href="http://localhost:3333/view?num=${post_seq}"</script>'`
+      );
+    }
+  })
+  
 })
 
 module.exports = router;
