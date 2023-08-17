@@ -36,15 +36,18 @@
                     {{postContent[0].post_conent}}
                 </div>
             </div>
+            <p class="comments_title">댓글작성란</p>
+            <hr>
             {% for j in postComment%}
-            <div>
-                <div>{{j.cmt_content}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{j.user_id}} </div>
+            <div class="comments_list">
+                <div class="comments_con">{{j.cmt_content}}&nbsp;&nbsp;</div>
+                <div class="comments_con">&nbsp;&nbsp;&nbsp;{{j.user_id}} </div>
             </div>
             {%endfor%}
             <div>
                 <input type="text" name="comments">
                 <input type="hidden" name="post_seq" value="{{postContent[0].post_seq}}">
-                <input type="submit">
+                <input type="submit" class="submit">
             </div>
             <div class="bt_wrap">
                 <a href="community" class="on">목록</a>

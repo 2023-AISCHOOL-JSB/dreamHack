@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-around;
     height: 50%;
+    padding: 0px;
 }
 /* #dreamboard_middle{
     display: flex;
@@ -16,18 +17,21 @@
     display: flex;
     justify-content: space-around;
     height: 50%;
+    padding: 0px;
 }
 #dream_left{
     border: 2px solid black;
     width: 50%;
     margin:0 auto;
     overflow:hidden;
+    padding: 5px;
 }
 #deram_right{
     border: 2px solid black;
     width: 50%;
     margin:0 auto;
     overflow:hidden;
+    padding: 5px;
 }
 .dreamimg{
     width:100%;
