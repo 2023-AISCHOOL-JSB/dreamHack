@@ -111,24 +111,12 @@ router.post("/add", async function(req, res){
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // /dreamboard/send 연결 시, 클라이언트에서 받은 데이터를 GCS 업로드 및 DB에 추가 + 완료 이미지도 GCS 업로드 및 DB 추가
 router.post("/send", async function (req, res) {
   const name = req.body.name;
   const value = req.body.value;
+  const url = req.body.url;
+  console.log("현재 url" + url.length);
   console.log("현재 value: " + value.length);
   // console.log('현재 캔버스 JSON문자열:',value, "-> 타입",typeof(value));
 
