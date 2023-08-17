@@ -407,7 +407,7 @@ dreamBoardText.style.fontFamily = "'Black Han Sans', sans-serif";
                 saveInBrowser.remove("canvasEditor");
                 await saveInBrowser.save("canvasEditor", _self.canvas.toJSON());
                 // fetch("/mydreamboard_content").then(res =>{return res.json}).catch()
-                setTimeout(()=>{window.location.href = "http://localhost:3333/dreamboard_list"},3000);
+                setTimeout(()=>{window.location.href = "http://localhost:3333/dreamboard_list"},2000);
               }
             }
 
