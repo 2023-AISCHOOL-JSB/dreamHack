@@ -45,21 +45,41 @@ router.post('/edit',(req,res)=>{
   })
 })
 
-router.post('/comments',(req,res)=>{
-  console.log(req.body);
-  let user = req.session.user.user_id
-  let {comments, post_seq} = req.body
+router.post('/delete',(req,res)=>{
+  console.log(req.body)
+  let post_seq = req.body.post_seq
 
-  let sql = `INSERT INTO comments(post_seq, cmt_content, cmt_views, user_id)VALUES(?, ?, 1, ?);`
-  
-  conn.query(sql,[post_seq,comments,user],(err,rows)=>{
-    if(rows.affectedRows>0){
+  let sql2 = "delete from comments where post_seq = ?"
+
+  conn.query(sql2,[post_seq],(err,rows)=>{
+    let sql = "delete from posts where post_seq = ?"
+    conn.query(sql,[post_seq],(err,rows)=>{
+      if(rows.affectedRows>0){
+        res.send(
+          `'<script>alert("삭제되었습니다");location.href="http://localhost:3333/community"</script>'`
+        );
+      }
+    })
+
+  })
+})
+
+router.post("/comments", (req, res) => {
+  console.log(req.body);
+  let user = req.session.user.user_id;
+  let { comments, post_seq } = req.body;
+
+  let sql = `INSERT INTO comments(post_seq, cmt_content, cmt_views, user_id)VALUES(?, ?, 1, ?);`;
+
+  conn.query(sql, [post_seq, comments, user], (err, rows) => {
+    if (rows.affectedRows > 0) {
       res.send(
         `'<script>location.href="http://localhost:3333/view?num=${post_seq}"</script>'`
       );
     }
-  })
-  
-})
+  });
+});
+
+
 
 module.exports = router;

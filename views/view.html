@@ -4,7 +4,7 @@
 
 {% block content%}
 
-<form id="form_view" action="/posts/comments" method="post">
+<div id="form_view">
     <div class="board_wrap">
         <div class="board_title">
             <strong>커뮤니티 게시판</strong>
@@ -41,23 +41,29 @@
             {% for j in postComment%}
             <div class="comments_list">
                 <div class="comments_con">{{j.cmt_content}}&nbsp;&nbsp;</div>
-                <div class="comments_con">&nbsp;&nbsp;&nbsp;{{j.user_id}} </div>
+                <div class="comments_con">&nbsp;&nbsp;&nbsp;{{j.user_id}}</div>
             </div>
             {%endfor%}
-            <div>
+            <form action="/posts/comments" method="post">
+                <div>
                 <input type="text" name="comments">
                 <input type="hidden" name="post_seq" value="{{postContent[0].post_seq}}">
                 <input type="submit" class="submit">
             </div>
+            </form>
             <div class="bt_wrap">
                 <a href="community" class="on">목록</a>
                 {% if postContent[0].user_id == obj.user_id %}
                 <a href="edit?num={{postContent[0].post_seq}}" class="on">수정</a>
+                <form action="/posts/delete" method="post">
+                    <input type="hidden" name="post_seq" value="{{postContent[0].post_seq}}">
+                    <input type="submit" value="삭제">
+                </form>
                 {% endif %}
             </div>
         </div>
     </div>
-</form>
+</div>
 
 {% endblock %}
 

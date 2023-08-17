@@ -55,8 +55,20 @@ router.post('/check',(req,res)=>{
 
 })
 
-router.get('/delete',(req,res)=>{
-    console.log(req.params);
+router.post('/delete',(req,res)=>{
+    console.log(req.body);
+
+    let goal_seq = req.body.goal_seq;
+
+    let sql = "delete from goals where goal_seq = ?"
+
+    conn.query(sql,[goal_seq],(err,rows)=>{
+        if(rows.affectedRows>0){
+            res.send(
+              `<script>alert("할일 삭제완료");location.href='http://localhost:3333/mypage_todolist'</script>`
+            );
+        }
+    })
 })
 
 module.exports = router;
