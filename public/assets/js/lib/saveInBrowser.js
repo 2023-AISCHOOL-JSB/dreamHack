@@ -34,7 +34,7 @@ function sendDataToServer(name, value , url) {
   const data = {
     name: name,
     value: JSON.stringify(value),
-    url : 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(url)
+    url : encodeURIComponent(url)
   };
 
   // '/dreamboard/save' 엔드포인트로 POST 요청을 전송
