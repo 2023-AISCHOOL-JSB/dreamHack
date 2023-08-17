@@ -46,9 +46,9 @@
                     <input type="submit" class="submit" value="확인">
                 </div>
             </form>
-            <form action="/todo/delete" method="post">
+            <form action="/todo/delete" method="post" class="delete_area">
                 <input type="hidden" name="goal_seq" value="{{todoList[0].goal_seq}}">
-                <input type="submit" value="삭제">
+                <input type="submit" value="삭제" class="delete_input">
             </form>
         </div>
     </div>

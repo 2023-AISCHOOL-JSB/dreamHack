@@ -427,3 +427,30 @@ a {
     padding: 5px;
     font-size: 22px;
 }
+.delete_input{
+    left: 85%;
+    position: relative;
+    display: inline-block;
+    min-width: 120px;
+    height: 30px;
+    margin-left: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    font-family: 'KotraBold';
+}
+.delete_input:hover {
+    display: inline-block;
+    min-width: 120px;
+    height: 30px;
+    margin-left: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background-color: white;
+    color: black;
+    transition: 0.2s;
+    border-radius: 20px;
+    font-family: 'KotraBold';
+}

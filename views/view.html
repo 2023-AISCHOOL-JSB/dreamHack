@@ -57,7 +57,7 @@
                 <a href="edit?num={{postContent[0].post_seq}}" class="on">수정</a>
                 <form action="/posts/delete" method="post">
                     <input type="hidden" name="post_seq" value="{{postContent[0].post_seq}}">
-                    <input type="submit" value="삭제">
+                    <input type="submit" value="삭제" class="submit">
                 </form>
                 {% endif %}
             </div>
